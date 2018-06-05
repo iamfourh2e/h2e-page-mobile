@@ -1,8 +1,20 @@
-package com.h2e_page_mobile;
+package com.h2e.page;
 
 import android.app.Application;
 
+import com.facebook.CallbackManager;
 import com.facebook.react.ReactApplication;
+import com.h2e.page.BuildConfig;
+import com.oblador.vectoricons.VectorIconsPackage;
+
+import org.devio.rn.splashscreen.SplashScreenReactPackage;
+
+import co.apptailor.googlesignin.RNGoogleSigninPackage;
+import io.invertase.firebase.RNFirebasePackage;
+import io.invertase.firebase.auth.RNFirebaseAuthPackage;
+
+import com.facebook.reactnative.androidsdk.FBSDKPackage;
+import com.airbnb.android.react.lottie.LottiePackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -13,6 +25,12 @@ import java.util.List;
 
 public class MainApplication extends Application implements ReactApplication {
 
+  private static CallbackManager mCallbackManager = CallbackManager.Factory.create();
+
+  protected static CallbackManager getCallbackManager() {
+    return mCallbackManager;
+  }
+
   private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
     @Override
     public boolean getUseDeveloperSupport() {
@@ -22,7 +40,14 @@ public class MainApplication extends Application implements ReactApplication {
     @Override
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
-          new MainReactPackage()
+              new MainReactPackage(),
+              new VectorIconsPackage(),
+              new SplashScreenReactPackage(),
+              new RNGoogleSigninPackage(),
+              new RNFirebasePackage(),
+              new RNFirebaseAuthPackage(),
+              new FBSDKPackage(mCallbackManager),
+              new LottiePackage()
       );
     }
 
