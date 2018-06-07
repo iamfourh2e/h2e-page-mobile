@@ -4,17 +4,16 @@ import android.app.Application;
 
 import com.facebook.CallbackManager;
 import com.facebook.react.ReactApplication;
-import com.h2e.page.BuildConfig;
+import org.devio.rn.splashscreen.SplashScreenReactPackage;
+import com.airbnb.android.react.lottie.LottiePackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 
-import org.devio.rn.splashscreen.SplashScreenReactPackage;
-
 import co.apptailor.googlesignin.RNGoogleSigninPackage;
+
 import io.invertase.firebase.RNFirebasePackage;
-import io.invertase.firebase.auth.RNFirebaseAuthPackage;
 
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
-import com.airbnb.android.react.lottie.LottiePackage;
+import io.invertase.firebase.auth.RNFirebaseAuthPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -41,13 +40,13 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
               new MainReactPackage(),
-              new VectorIconsPackage(),
-              new SplashScreenReactPackage(),
+            new SplashScreenReactPackage(),
+            new LottiePackage(),
+            new VectorIconsPackage(),
               new RNGoogleSigninPackage(),
               new RNFirebasePackage(),
               new RNFirebaseAuthPackage(),
-              new FBSDKPackage(mCallbackManager),
-              new LottiePackage()
+              new FBSDKPackage(mCallbackManager)
       );
     }
 

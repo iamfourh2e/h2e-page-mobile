@@ -9,6 +9,7 @@ import {
 import firebase from 'react-native-firebase';
 import FBSDK, {LoginManager, AccessToken, LoginButton} from 'react-native-fbsdk';
 import {GoogleSignin, GoogleSigninButton} from 'react-native-google-signin';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 type Props = {};
 export default class App extends Component<Props> {
@@ -31,31 +32,36 @@ export default class App extends Component<Props> {
       const currentUser = await firebase.auth().signInAndRetrieveDataWithCredential(credential);
       console.info(JSON.stringify(currentUser.user.toJSON()))
     } catch (e) {
-      console.error(e);
+      console.log(e);
     }
   };
 
-  handleGoogleLogin = async () => {
-    GoogleSignin.hasPlayServices({autoResolve: true})
-      .then(() => {
-        // play services are available. can now configure library
-      })
-      .catch((err) => {
-        console.log("Play services error", err.code, err.message);
-      });
+  handleGoogleLogin = () => {
     try {
-      // Add any configuration settings here:
-
-      await GoogleSignin.configure();
-      const data = await GoogleSignin.signIn();
-      // create a new firebase credential with the token
-      const credential = firebase.auth.GoogleAuthProvider.credential(data.idToken, data.accessToken)
-      // login with credential
-      const currentUser = await firebase.auth().signInAndRetrieveDataWithCredential(credential);
-
-      console.info(JSON.stringify(currentUser.user.toJSON()));
+      GoogleSignin.hasPlayServices({autoResolve: true})
+        .then(() => {
+          GoogleSignin.configure({
+            iosClientId: "814799637934-qjb5o4k5inoo63d38a5fu96oic7er1gt.apps.googleusercontent.com",
+          })
+            .then(() => {
+              // you can now call currentUserAsync()
+              // await GoogleSignin.configure();
+              // const data = await GoogleSignin.signIn();
+              GoogleSignin.signIn().then((data) => {
+                // create a new firebase credential with the token
+                const credential = firebase.auth.GoogleAuthProvider.credential(data.idToken, data.accessToken)
+                firebase.auth().signInAndRetrieveDataWithCredential(credential).then((currentUser) => {
+                  // login with credential
+                  console.info(currentUser.user);
+                }).catch((err) => console.log(err));
+              }).catch((err) => console.log(err));
+            }).catch((err) => console.log(err));
+        })
+        .catch((err) => {
+          console.log("Play services error", err.code, err.message);
+        });
     } catch (e) {
-      console.error(e);
+      console.log(e);
     }
   };
 
@@ -86,6 +92,11 @@ export default class App extends Component<Props> {
           title="Logout Facebook"
           color="#4267B2"
         />
+        <Button
+          onPress={this.handleGoogleLogin}
+          title="Sign in Google"
+          color="#4267B2"
+        />
         <GoogleSigninButton
           style={{width: 312, height: 48}}
           size={GoogleSigninButton.Size.Wide}
@@ -110,8 +121,10 @@ export default class App extends Component<Props> {
         <Button
           onPress={this.handleGoogleLogout}
           title="Logout Google"
-          color="#eee"
+          color={"#007aee"}
         />
+        <Icon name="ios-person" size={30} color="#4F8EF7" />
+
       </View>
     )
   }

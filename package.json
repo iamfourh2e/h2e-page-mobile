@@ -1,7 +1,7 @@
 {
-  "name": "h2e-page-mobile",
+  "name": "Page",
   "appName": "ទំព័រ",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
@@ -17,7 +17,7 @@
   "dependencies": {
     "date-fns": "^1.29.0",
     "lodash": "^4.17.10",
-    "lottie-react-native": "^2.5.0",
+    "lottie-react-native": "2.3.2",
     "mobx": "^4.3.0",
     "mobx-react": "^5.1.2",
     "numeral": "^2.0.6",
