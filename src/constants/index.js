@@ -37,11 +37,11 @@ export const Layout = {
 };
 
 export const Fonts = {
-  battambang: 'Battambang',
-  battambangBold: 'Battambang-Bold',
-  khpreyveng: 'KhPreyVeng',
-  moul: 'Moul',
-  wbIcon: Platform.OS === 'android' ? 'WBIcon' : 'icomoon'
+  // battambang: 'Battambang',
+  // battambangBold: 'Battambang-Bold',
+  // khpreyveng: 'KhPreyVeng',
+  // moul: 'Moul',
+  // wbIcon: Platform.OS === 'android' ? 'WBIcon' : 'icomoon'
 };
 
 export const Colors = {
@@ -87,11 +87,11 @@ export const FontSizes = {
 
 
 export const Images = {
-  appLogo: require('../assets/images/icon_500.png'),
-  user: require('../assets/images/user.png'),
-  background: require('../assets/images/blurBg.png'),
-  notFound: require('../assets/images/404NotFound.png'),
-  coming :require('../assets/images/coming.png')
+  // appLogo: require('../assets/images/icon_500.png'),
+  // user: require('../assets/images/user.png'),
+  // background: require('../assets/images/blurBg.png'),
+  // notFound: require('../assets/images/404NotFound.png'),
+  // coming :require('../assets/images/coming.png')
 };
 
 export const Metrics = {
@@ -126,4 +126,8 @@ export const PJson = {
   version: pjson.version,
   address: 'បាត់ដំបង',
   phone: '012 345 678'
+};
+
+export const Strings = {
+  'page': 'ទំព័រ'
 };

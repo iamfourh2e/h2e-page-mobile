@@ -137,11 +137,11 @@ android {
 }
 
 dependencies {
-    compile project(':react-native-splash-screen')
-    compile project(':lottie-react-native')
-    compile project(':react-native-vector-icons')
-    compile project(':react-native-google-signin')
-    compile(project(':react-native-firebase')) {
+    implementation project(':react-native-splash-screen')
+    implementation project(':lottie-react-native')
+    implementation project(':react-native-vector-icons')
+    implementation project(':react-native-google-signin')
+    implementation(project(':react-native-firebase')) {
         transitive = false
     }
     compile project(':react-native-fbsdk')
