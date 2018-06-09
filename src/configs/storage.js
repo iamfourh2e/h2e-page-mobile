@@ -5,11 +5,16 @@ import _ from 'lodash';
 
 class Storage {
   constructor() {
-    this.user = '@wba:user';
+    this.user = '@p:user';
+    this.locale = '@p:locale';
   }
 
   getUserKey() {
     return this.user
+  };
+
+  getLocaleKey() {
+    return this.locale
   };
 
   clearStorage = () => {

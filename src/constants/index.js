@@ -37,6 +37,9 @@ export const Layout = {
 };
 
 export const Fonts = {
+  bold: null,
+  regular: null,
+  appBar: null
   // battambang: 'Battambang',
   // battambangBold: 'Battambang-Bold',
   // khpreyveng: 'KhPreyVeng',
@@ -73,17 +76,48 @@ export const Colors = {
 };
 
 export const FontSizes = {
-    title: isSmallDevice ? 16 : 18,
-    invoiceDetailFontSize: isSmallDevice ? 16 : 18,
-    subtitle: isSmallDevice ? 14 : 16,
-    bodyLarge: 14,
-    bodyTitle: isSmallDevice ? 14 : 15,
-    normalButton: isSmallDevice ? 15 : 16,
-    appBarIconSize: 26,
-    smallTitle: 17,
-    largeTitle: 27
+  title: isSmallDevice ? 16 : 18,
+  invoiceDetailFontSize: isSmallDevice ? 16 : 18,
+  subtitle: isSmallDevice ? 14 : 16,
+  bodyLarge: 14,
+  bodyTitle: isSmallDevice ? 14 : 15,
+  normalButton: isSmallDevice ? 15 : 16,
+  appBarIconSize: 26,
+  smallTitle: 17,
+  largeTitle: 27
+};
+
+export const ToastStyles = (type) => {
+  let background = Colors.black();
+  switch (type) {
+    case 'success':
+      background = Colors.success;
+      break;
+    case 'danger':
+      background = Colors.danger;
+      break;
+    case 'warning':
+      background = Colors.warning;
+      break;
+    case 'info':
+      background = Colors.info;
+      break;
+    default:
+      break;
   }
-;
+  return {
+    backgroundColor: background,
+    width: 300,
+    height: Platform.OS === ("ios") ? 50 : 100,
+    color: "#ffffff",
+    fontSize: 15,
+    lineHeight: 2,
+    lines: 4,
+    borderRadius: 15,
+    fontWeight: "bold",
+    yOffset: 40
+  }
+};
 
 
 export const Images = {

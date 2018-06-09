@@ -75,6 +75,18 @@
       "size" : "29x29",
       "idiom" : "iphone",
       "unassigned" : true,
+      "scale" : "2x"
+    },
+    {
+      "size" : "29x29",
+      "idiom" : "iphone",
+      "unassigned" : true,
+      "scale" : "3x"
+    },
+    {
+      "size" : "29x29",
+      "idiom" : "iphone",
+      "unassigned" : true,
       "scale" : "3x"
     },
     {
@@ -82,6 +94,18 @@
       "idiom" : "iphone",
       "unassigned" : true,
       "scale" : "2x"
+    },
+    {
+      "size" : "40x40",
+      "idiom" : "iphone",
+      "unassigned" : true,
+      "scale" : "2x"
+    },
+    {
+      "size" : "40x40",
+      "idiom" : "iphone",
+      "unassigned" : true,
+      "scale" : "3x"
     },
     {
       "size" : "40x40",

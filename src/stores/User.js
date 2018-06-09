@@ -1,5 +1,5 @@
 import {observable, computed, action} from 'mobx';
-import {storage, user_storage} from "../configs/storage";
+import {storage} from "../configs/storage";
 import {AsyncStorage} from "react-native";
 import FP from '../libs/fp';
 const fromNullAble = (x) => !!x ? FP.Right(x) : FP.Left(null);

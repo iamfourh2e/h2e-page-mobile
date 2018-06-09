@@ -4,6 +4,14 @@ import android.app.Application;
 
 import com.facebook.CallbackManager;
 import com.facebook.react.ReactApplication;
+import com.toast.RCTToastPackage;
+import com.avishayil.rnrestart.ReactNativeRestartPackage;
+import com.oblador.vectoricons.VectorIconsPackage;
+import org.devio.rn.splashscreen.SplashScreenReactPackage;
+import co.apptailor.googlesignin.RNGoogleSigninPackage;
+import io.invertase.firebase.RNFirebasePackage;
+import com.airbnb.android.react.lottie.LottiePackage;
+import com.AlexanderZaytsev.RNI18n.RNI18nPackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import com.airbnb.android.react.lottie.LottiePackage;
 import com.oblador.vectoricons.VectorIconsPackage;
@@ -40,6 +48,14 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
               new MainReactPackage(),
+            new RCTToastPackage(),
+            new ReactNativeRestartPackage(),
+            new VectorIconsPackage(),
+            new SplashScreenReactPackage(),
+            new RNGoogleSigninPackage(),
+            new RNFirebasePackage(),
+            new LottiePackage(),
+            new RNI18nPackage(),
             new SplashScreenReactPackage(),
             new LottiePackage(),
             new VectorIconsPackage(),
