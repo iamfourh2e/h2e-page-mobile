@@ -1,5 +1,6 @@
 export default {
   greeting: 'Hello!',
   home: 'Home',
-  success: 'Success'
+  success: 'Success',
+  cancel: 'Cancel'
 };

@@ -1,8 +1,10 @@
 import React from 'react';
 import {View, Text, TouchableHighlight, Platform, Animated, Keyboard} from 'react-native';
 import Modal from 'react-native-modal'
+import I18n from '../../configs/i18n';
 import {styles} from './styles';
-import {Layout} from "../../constants";
+import {Colors, Layout} from "../../constants";
+
 const Touchable = Platform.OS === 'android' ? TouchableHighlight : TouchableHighlight;
 
 const Title = (props) => <Text numberOfLines={1}
@@ -12,9 +14,7 @@ const Message = (props) =>
 
 const Button = (props) => {
   const buttonsLength = props.buttons.length;
-  const buttonsContainerStyle = buttonsLength === 1 ? styles.oneButtonContainer :
-    buttonsLength === 2 ? styles.twoButtonsContainer :
-      buttonsLength >= 3 ? styles.threeButtonsContainer : null;
+  const buttonsContainerStyle = styles.threeButtonsContainer;
   if (buttonsLength > 0) {
     return props.buttons.map((o, i) => {
       return (
@@ -23,11 +23,7 @@ const Button = (props) => {
           underlayColor="#EFEFEF"
           style={[
             buttonsContainerStyle,
-            buttonsLength === 1 ? [styles.borderBottomLeftRadius, styles.borderBottomRightRadius] :
-              buttonsLength === 2 ? [
-                  i === 0 ? [styles.borderBottomLeftRadius, {borderRightWidth: 1}] : [styles.borderBottomRightRadius, {borderRightWidth: 0}]
-                ] :
-                buttonsLength >= 3 && i === buttonsLength - 1 ? [styles.borderBottomLeftRadius, styles.borderBottomRightRadius] : null
+            i === buttonsLength - 1 ? [styles.borderBottomLeftRadius, styles.borderBottomRightRadius] : null
           ]}
           onPress={() => o.onPress(() => props.dismiss())}
         >
@@ -42,7 +38,28 @@ const Button = (props) => {
   }
 };
 
-class AlertModal extends React.PureComponent {
+const CancelButton = (props) => {
+  return (
+    <Touchable underlayColor="#EFEFEF"
+               style={[
+                 styles.cancelButtonContainer,
+                 styles.borderBottomLeftRadius,
+                 styles.borderBottomRightRadius,
+                 styles.borderTopLeftRadius,
+                 styles.borderTopRightRadius
+               ]}
+               onPress={() => props.dismiss()}
+    >
+      <View>
+        <View pointerEvents="none">
+          <Text style={styles.buttonText}>{I18n.t('cancel')}</Text>
+        </View>
+      </View>
+    </Touchable>
+  )
+};
+
+class ActionSheetModal extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -51,7 +68,7 @@ class AlertModal extends React.PureComponent {
       headerBackgroundColor: "transparent",
       message: '',
       buttons: [],
-      openAlertModal: false,
+      showActionSheetModal: false,
     };
     this.animatedY = new Animated.Value(0);
   }
@@ -60,6 +77,7 @@ class AlertModal extends React.PureComponent {
     this.keyboardWillShowListener = Keyboard.addListener('keyboardWillShow', () => this._showKeyboard());
     this.keyboardWillHideListener = Keyboard.addListener('keyboardWillHide', () => this._dismissKeyboard());
   }
+
   componentWillUnmount() {
     this.keyboardWillShowListener.remove();
     this.keyboardWillHideListener.remove();
@@ -83,7 +101,7 @@ class AlertModal extends React.PureComponent {
 
   render() {
     const {animationIn, animationInTiming, animationOut, animationOutTiming} = this.props;
-    const {headerColor, headerBackgroundColor, title, message, buttons, openAlertModal} = this.state;
+    const {headerColor, headerBackgroundColor, title, message, buttons, showActionSheetModal} = this.state;
     const buttonsLength = buttons.length;
 
     const animatedStyle = {
@@ -96,69 +114,47 @@ class AlertModal extends React.PureComponent {
 
     const animIn = {
       0: {
-        scale: 1.15,
+        translateY: 100
       },
       0.1: {
-        scale: 1.10
-      },
-      0.2:{
-        scale: 1.09,
-      },
-      0.3: {
-        scale: 1.08,
-      },
-      0.4: {
-        scale: 1.07,
-      },
-      0.5: {
-        scale: 1.06,
-      },
-      0.6: {
-        scale: 1.05,
-      },
-      0.7: {
-        scale: 1.04,
-      },
-      0.8: {
-        scale: 1.03,
-      },
-      0.9: {
-        scale: 1.02,
-      },
-      1: {
-        scale: 1,
-      },
-    };
-    const animOut = {
-      0: {
-        opacity: 1,
-        scale: 1
+        translateY: 85
       },
       0.2: {
-        opacity: 0.3,
-        scale: 0.9
+        translateY: 35,
+      },
+      0.3: {
+        translateY: 30,
+      },
+      0.4: {
+        translateY: 25,
+      },
+      0.5: {
+        translateY: 20,
+      },
+      0.7: {
+        translateY: 15,
       },
       0.8: {
-        opacity: 0.1,
-        scale: 0.9
+        translateY: 10,
+      },
+      0.9: {
+        translateY: 5,
       },
       1: {
-        opacity: 0,
-        scale: 0.9,
-      },
+        translateY: 0
+      }
     };
-
     return (
       <Modal
-        isVisible={openAlertModal}
-        // style={[styles.modal]}
+        isVisible={showActionSheetModal}
+        style={{justifyContent: 'flex-end'}}
         onBackButtonPress={this.dismiss}
         onBackdropPress={this.props.allowOutSideClick ? this.dismiss : null}
         backdropOpacity={0.4}
         animationIn={animationIn ? animationIn : animIn}
-        animationInTiming={animationInTiming ? animationInTiming : 250}
-        animationOut={animationOut ? animationOut : animOut}
-        animationOutTiming={animationOutTiming ? animationOutTiming : 250}
+        animationInTiming={animationInTiming ? animationInTiming : 350}
+        animationOut={animationOut ? animationOut : "slideOutDown"}
+        animationOutTiming={animationOutTiming ? animationOutTiming : 500}
         supportedOrientations={['portrait']}
         // onOrientationChange={}
       >
@@ -185,29 +181,28 @@ class AlertModal extends React.PureComponent {
               {this.props.children ? this.props.children : <Message message={message}/>}
             </View>
             <View style={styles.buttonsContainer}>
-              <View style={
-                buttonsLength === 2 ? {flex: 0, flexDirection: 'row'} :
-                  buttonsLength === 1 ? {flex: 0, flexDirection: 'row'} :
-                    {flex: 0, flexDirection: 'column', width: '100%'}
-              }>
+              <View style={{flexDirection: 'column', width: '100%'}}>
                 <Button buttons={buttons} dismiss={this.dismiss}/>
               </View>
             </View>
           </View>
         </Animated.View>
+        <View style={{paddingTop: 10, paddingBottom: 15}}>
+          <CancelButton dismiss={this.dismiss}/>
+        </View>
       </Modal>
     );
   }
 
-  alert = ({headerColor = "#000", headerBackgroundColor = "transparent", title, message, buttons}) => {
+  show = ({headerColor = "#000", headerBackgroundColor = "transparent", title, message, buttons}) => {
     this.setState({
       headerColor: headerColor,
       headerBackgroundColor: headerBackgroundColor || this.state.headerBackgroundColor,
       title, message, buttons,
-      openAlertModal: true,
+      showActionSheetModal: true,
     })
   };
-  dismiss = () => this.setState({openAlertModal: false});
+  dismiss = () => this.setState({showActionSheetModal: false});
 }
 
-export default AlertModal;
+export default ActionSheetModal;
