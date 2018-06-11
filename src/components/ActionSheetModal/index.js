@@ -187,7 +187,7 @@ class ActionSheetModal extends React.PureComponent {
             </View>
           </View>
         </Animated.View>
-        <View style={{paddingTop: 10, paddingBottom: 15}}>
+        <View style={{paddingTop: 10, paddingBottom: 5}}>
           <CancelButton dismiss={this.dismiss}/>
         </View>
       </Modal>

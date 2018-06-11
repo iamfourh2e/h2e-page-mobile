@@ -299,7 +299,7 @@ const styles = StyleSheet.create({
   tabBar: {
     backgroundColor: '#F7F7F7', // Default background color in iOS 10
     borderTopWidth: StyleSheet.hairlineWidth,
-    paddingTop: 35,
+    paddingTop: Platform.OS === 'ios' ? 35 : 0,
     borderTopColor: 'rgba(0, 0, 0, .3)',
     flexDirection: 'row',
   },

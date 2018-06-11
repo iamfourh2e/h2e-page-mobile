@@ -108,7 +108,7 @@ export const ToastStyles = (type) => {
   return {
     backgroundColor: background,
     width: 300,
-    height: Platform.OS === ("ios") ? 50 : 100,
+    height: Platform.OS === "ios" ? 50 : 130,
     color: "#ffffff",
     fontSize: 15,
     lineHeight: 2,
