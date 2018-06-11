@@ -1,4 +1,5 @@
 //component
+import Login, {AuthLoading} from './Login';
 import Home from './Home';
 import Post from './Post';
 import Message from './Message';
@@ -7,6 +8,8 @@ import Tab2 from './Tab2';
 import Test from './Test';
 
 export default {
+  AuthLoading,
+  Login,
   Home,
   Post,
   Message,

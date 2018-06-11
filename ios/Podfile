@@ -16,6 +16,8 @@ pod 'Firebase/Auth'
 
 # pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
+  pod 'react-native-fcm', :path => '../node_modules/react-native-fcm'
+
   target 'pageTests' do
     inherit! :search_paths
     # Pods for testing

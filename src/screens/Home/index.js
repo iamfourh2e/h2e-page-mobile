@@ -1,20 +1,18 @@
 import React, {Component} from 'react';
 import {TouchableOpacity, Text, TextInput, View, Button} from 'react-native';
-import I18n from '../../configs/i18n';
-import Toast from '../../libs/toast';
-import AppBar from "../../components/AppBar";
-import {Colors, ToastStyles} from "../../constants";
-import AlertModal from "../../components/AlertModal";
-import ActionSheetModal from "../../components/ActionSheetModal";
+import {I18n} from '../../configs';
+import {Toast} from '../../libs';
+import {AppBar, AlertModal, ActionSheetModal} from '../../components';
+
+import {Colors} from "../../constants";
 
 const Props = {};
-
 
 export default class Home extends Component<Props> {
 
   showActionSheetModal = () => {
     const context = {
-      title: "សូមអភ័យទោស",
+      // title: "សូមអភ័យទោស",
       message: 'ម៉ាស៊ីនបោះពុម្ព ម៉ាស៊ីនបោះពុម្ព',
       headerBackgroundColor: Colors.success,
       headerColor: Colors.white(),
@@ -25,27 +23,6 @@ export default class Home extends Component<Props> {
           }
         },
         {
-          text: "យល់ព្រម", onPress: fn => {
-            return fn()
-          }
-        },
-        {
-          text: "យល់ព្រម", onPress: fn => {
-            return fn()
-          }
-        }, {
-          text: "យល់ព្រម", onPress: fn => {
-            return fn()
-          }
-        }, {
-          text: "យល់ព្រម", onPress: fn => {
-            return fn()
-          }
-        }, {
-          text: "យល់ព្រម", onPress: fn => {
-            return fn()
-          }
-        }, {
           text: "យល់ព្រម", onPress: fn => {
             return fn()
           }

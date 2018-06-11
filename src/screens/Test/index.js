@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Meteor from 'react-native-meteor';
 import {
   View,
   Button
@@ -11,6 +12,14 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 type Props = {};
 export default class Test extends Component<Props> {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentUser: {}
+    }
+  }
+
   handleFacebookLogin = async () => {
     // Calling the following function will open the FB login dialogue:
     try {
@@ -47,10 +56,25 @@ export default class Test extends Component<Props> {
               // const data = await GoogleSignin.signIn();
               GoogleSignin.signIn().then((data) => {
                 // create a new firebase credential with the token
-                const credential = firebase.auth.GoogleAuthProvider.credential(data.idToken, data.accessToken)
+                const credential = firebase.auth.GoogleAuthProvider.credential(data.idToken, data.accessToken);
                 firebase.auth().signInAndRetrieveDataWithCredential(credential).then((currentUser) => {
                   // login with credential
-                  console.info(currentUser.user);
+                  const {_user: user} = currentUser.user._auth._user;
+                  const userInfo = {
+                    username: user.displayName,
+                    _id: user.uid,
+                    email: [
+                      {address: user.email, verified: user.emailVerified}
+                    ],
+                    profile: {
+                      phoneNumber: user.phoneNumber,
+                      photoUrl: user.photoURL
+                    },
+                    token: data.accessToken
+                  };
+
+                  Meteor.call('user_insertUser', userInfo);
+
                 }).catch((err) => console.log(err));
               }).catch((err) => console.log(err));
             }).catch((err) => console.log(err));
@@ -121,7 +145,7 @@ export default class Test extends Component<Props> {
           title="Logout Google"
           color={"#007aee"}
         />
-        <Icon name="ios-person" size={30} color="#4F8EF7" />
+        <Icon name="ios-person" size={30} color="#4F8EF7"/>
 
       </View>
     )

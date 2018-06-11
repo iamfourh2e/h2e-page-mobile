@@ -3,8 +3,7 @@ import {inject, observer} from 'mobx-react';
 import {View, Text, Button} from 'react-native';
 import RNRestart from 'react-native-restart';
 
-
-import I18n from '../../configs/i18n';
+import {I18n} from '../../configs';
 import {Colors} from "../../constants";
 
 const Props = {};

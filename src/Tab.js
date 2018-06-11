@@ -3,18 +3,15 @@ import React from 'react';
 import TabNavigator from './components/CustomTabBar/TabNavigator';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import I18n from './configs/i18n';
+import {I18n} from './configs';
 //Screen
-import Home from "./screens/Home";
-import Profile from "./screens/Profile";
-import Post from "./screens/Post";
-import Message from "./screens/Message";
-import Test from "./screens/Test";
+
+import Screen from './screens';
 
 export default TabNav = TabNavigator(
   {
     HomeTab: {
-      screen: Home,
+      screen: Screen.Home,
       navigationOptions: {
         title: 'Home',
         tabBarLabel: () => I18n.t('home'),
@@ -28,7 +25,7 @@ export default TabNav = TabNavigator(
       },
     },
     PostTab: {
-      screen: Post,
+      screen: Screen.Post,
       navigationOptions: {
         title: 'Post',
         tabBarLabel: 'Post',
@@ -42,7 +39,7 @@ export default TabNav = TabNavigator(
       },
     },
     MessageTab: {
-      screen: Message,
+      screen: Screen.Message,
       navigationOptions: {
         title: 'Message',
         tabBarLabel: 'Message',
@@ -56,7 +53,7 @@ export default TabNav = TabNavigator(
       },
     },
     ProfileTab: {
-      screen: Profile,
+      screen: Screen.Profile,
       navigationOptions: {
         title: 'Profile',
         tabBarIcon: ({tintColor, focused}) => (
@@ -69,7 +66,7 @@ export default TabNav = TabNavigator(
       },
     },
     TestTab: {
-      screen: Test,
+      screen: Screen.Test,
       navigationOptions: {
         title: 'Test',
         tabBarIcon: ({tintColor, focused}) => (

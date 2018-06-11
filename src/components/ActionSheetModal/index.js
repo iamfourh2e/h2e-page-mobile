@@ -151,7 +151,7 @@ class ActionSheetModal extends React.PureComponent {
         onBackButtonPress={this.dismiss}
         onBackdropPress={this.props.allowOutSideClick ? this.dismiss : null}
         backdropOpacity={0.4}
-        animationIn={animationIn ? animationIn : animIn}
+        animationIn={animationIn ? animationIn : "slideInUp"}
         animationInTiming={animationInTiming ? animationInTiming : 350}
         animationOut={animationOut ? animationOut : "slideOutDown"}
         animationOutTiming={animationOutTiming ? animationOutTiming : 500}

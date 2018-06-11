@@ -5,9 +5,10 @@ import {
   StackNavigator,
   TabNavigator,
 } from 'react-navigation';
-import {slideLeftToRightTransition} from "../libs/navigationTransition";
+import {slideLeftToRightTransition} from "../libs";
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import Screen from './index';
 import Home from "./Home";
 import Post from "./Post";
 

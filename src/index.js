@@ -1,29 +1,43 @@
 import React from 'react';
 import {Platform} from "react-native";
-import {StackNavigator} from "react-navigation";
+import {StackNavigator, SwitchNavigator} from "react-navigation";
 import Drawer from "./Drawer";
 import Screen from "./screens"
-import {slideLeftToRightTransition, slideBottomToTopTransition} from "./libs/navigationTransition";
+import {slideLeftToRightTransition} from "./libs";
 import {Provider} from 'mobx-react';
 import stores from "./stores";
 
-const AppNavigator = StackNavigator(
+const AuthStack = StackNavigator({Login: Screen.Login});
+const AppStack = StackNavigator(
   {
-    Root: {screen: Drawer},
+    Drawer: {screen: Drawer},
     Tab2: {screen: Screen.Tab2},
     Home: {screen: Screen.Home},
   },
   {
-    initialRouteName: 'Root',
+    initialRouteName: 'Drawer',
     headerMode: 'none',
     // mode: Platform.OS === 'ios' ? 'modal' : 'card',
     transitionConfig: () => (Platform.OS === 'ios' ? {} : slideLeftToRightTransition),
   }
 );
 
+
+const RootNavigator = SwitchNavigator(
+  {
+    AuthLoading: Screen.AuthLoading,
+    App: AppStack,
+    Auth: AuthStack,
+  },
+  {
+    initialRouteName: 'AuthLoading',
+  }
+);
+
+
 export default () => (
   <Provider stores={stores}>
-    <AppNavigator/>
+    <RootNavigator/>
   </Provider>
 );
 
