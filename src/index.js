@@ -13,6 +13,7 @@ const AppStack = StackNavigator(
     Drawer: {screen: Drawer},
     Tab2: {screen: Screen.Tab2},
     Home: {screen: Screen.Home},
+    Detail: {screen: Screen.DetailPage}
   },
   {
     initialRouteName: 'Drawer',
