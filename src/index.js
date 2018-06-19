@@ -7,7 +7,12 @@ import {slideLeftToRightTransition} from "./libs";
 import {Provider} from 'mobx-react';
 import stores from "./stores";
 
-const AuthStack = StackNavigator({Login: Screen.Login});
+const AuthStack = StackNavigator(
+  {Login: Screen.Login},
+  {
+    headerMode: 'none',
+  }
+);
 const AppStack = StackNavigator(
   {
     Drawer: {screen: Drawer},

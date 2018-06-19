@@ -30,7 +30,6 @@
     "react-native-firebase": "^4.2.0",
     "react-native-google-signin": "^0.12.0",
     "react-native-i18n": "^2.0.12",
-    "react-native-iphone-x-helper": "^1.0.3",
     "react-native-meteor": "1.2.0",
     "react-native-modal": "^4.1.1",
     "react-native-restart": "^0.0.6",

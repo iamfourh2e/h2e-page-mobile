@@ -15,5 +15,5 @@ export default {
   Message,
   Profile,
   Tab2,
-  Test
+  Test,
 };
