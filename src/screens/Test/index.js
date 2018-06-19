@@ -55,6 +55,7 @@ export default class Test extends Component<Props> {
               // await GoogleSignin.configure();
               // const data = await GoogleSignin.signIn();
               GoogleSignin.signIn().then((data) => {
+            
                 // create a new firebase credential with the token
                 const credential = firebase.auth.GoogleAuthProvider.credential(data.idToken, data.accessToken);
                 firebase.auth().signInAndRetrieveDataWithCredential(credential).then((currentUser) => {

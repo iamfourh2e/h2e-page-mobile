@@ -289,7 +289,6 @@ export class ListItems extends Component {
     };
     return items.map((data, k) => {
       items.length === k;
-      console.log(items.length - 1 == k)
       return (
         <View key={k}>
           <TouchableOpacity style={styles.contentItem}>

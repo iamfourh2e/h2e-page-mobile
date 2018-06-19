@@ -15,7 +15,7 @@ const AuthStack = StackNavigator(
 );
 const AppStack = StackNavigator(
   {
-    Drawer: {screen: Drawer},
+    Drawer: {screen: Screen.Home},
     Tab2: {screen: Screen.Tab2},
     Home: {screen: Screen.Home},
   },
