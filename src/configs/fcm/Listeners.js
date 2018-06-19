@@ -138,4 +138,4 @@ FCM.setNotificationCategories([
     ],
     options: [NotificationCategoryOption.CustomDismissAction, NotificationCategoryOption.PreviewsShowTitle]
   }
-])
+]);

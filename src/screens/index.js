@@ -6,7 +6,6 @@ import Message from './Message';
 import Profile from './Profile';
 import Tab2 from './Tab2';
 import Test from './Test';
-import {DetailPage} from "./Message";
 
 export default {
   AuthLoading,
@@ -17,5 +16,4 @@ export default {
   Profile,
   Tab2,
   Test,
-  DetailPage
 };

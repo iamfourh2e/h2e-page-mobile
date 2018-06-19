@@ -1,5 +1,5 @@
 import {Dimensions, Platform, StatusBar} from 'react-native';
-import {ifIphoneX} from 'react-native-iphone-x-helper';
+// import {ifIphoneX} from 'react-native-iphone-x-helper';
 
 const X_WIDTH = 375;
 const X_HEIGHT = 812;
@@ -12,7 +12,7 @@ const notchHeight = isIPhoneX ? 20 : 0;
 const isSmallDevice = D_WIDTH < 357;
 
 const APPBAR_HEIGHT = Platform.OS === 'ios' ? 44 : 56;
-const statusBar = Platform.OS === 'ios' ? ifIphoneX(44, 20) :
+const statusBar = Platform.OS === 'ios' ? 20 :
   Platform.OS === 'android' && Platform.Version >= 20 ? 24 : 0;
 // const statusBar = StatusBar.currentHeight;
 const header = 192;
