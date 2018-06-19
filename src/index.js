@@ -15,7 +15,7 @@ const AppStack = StackNavigator(
     Home: {screen: Screen.Home},
   },
   {
-    initialRouteName: 'Drawer',
+    initialRouteName: 'Home',
     headerMode: 'none',
     // mode: Platform.OS === 'ios' ? 'modal' : 'card',
     transitionConfig: () => (Platform.OS === 'ios' ? {} : slideLeftToRightTransition),

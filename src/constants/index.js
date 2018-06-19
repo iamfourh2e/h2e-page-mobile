@@ -1,9 +1,10 @@
-import {Dimensions, Platform, StatusBar} from 'react-native';
-import {ifIphoneX} from 'react-native-iphone-x-helper';
+import { Dimensions, Platform, StatusBar } from 'react-native';
+import { ifIphoneX } from 'react-native-iphone-x-helper';
+import NormalizeText from '../components/NormalizeText';
 
 const X_WIDTH = 375;
 const X_HEIGHT = 812;
-const {height: D_HEIGHT, width: D_WIDTH} = Dimensions.get('window');
+const { height: D_HEIGHT, width: D_WIDTH } = Dimensions.get('window');
 
 const isIPhoneX =
   Platform.OS === 'ios' && (D_HEIGHT === X_HEIGHT && D_WIDTH === X_WIDTH);
@@ -73,9 +74,16 @@ export const Colors = {
   clear: 'transparent',
   white: opacity => `rgba(255,255,255,${opacity || 1})`,
   black: opacity => `rgba(0,0,0,${opacity || 1})`,
+  lightGrey: '#ADADAD',
+  lightYellow: '#F7B731'
 };
 
 export const FontSizes = {
+  mainTitle: NormalizeText(16),
+  subMainTitle: NormalizeText(13),
+  itemTitle: NormalizeText(12),
+  subItemTitle: NormalizeText(10),
+
   title: isSmallDevice ? 16 : 18,
   invoiceDetailFontSize: isSmallDevice ? 16 : 18,
   subtitle: isSmallDevice ? 14 : 16,
@@ -121,6 +129,17 @@ export const ToastStyles = (type) => {
 
 
 export const Images = {
+  cinema: require('../assets/images/cinema.png'),
+  restaurant: require('../assets/images/restaurant.png'),
+  hotel: require('../assets/images/hotel.png'),
+  shop: require('../assets/images/shop.png'),
+  restaurant_01: require('../assets/slide/restaurant_01.png'),
+  restaurant_02: require('../assets/slide/restaurant_02.png'),
+  restaurant_03: require('../assets/slide/restaurant_03.png'),
+  restaurant_04: require('../assets/slide/restaurant_04.png'),
+  restaurant_05: require('../assets/slide/restaurant_05.png'),
+  restaurant_06: require('../assets/slide/restaurant_06.png'),
+
   // appLogo: require('../assets/images/icon_500.png'),
   // user: require('../assets/images/user.png'),
   // background: require('../assets/images/blurBg.png'),

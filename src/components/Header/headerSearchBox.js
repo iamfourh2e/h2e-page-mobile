@@ -3,12 +3,18 @@ import {
   TouchableOpacity,
   Text,
   View,
-  TextInput
+  TextInput,
+  StatusBar
 } from 'react-native';
 import { I18n } from '../../configs';
+import normailzeText from '../../libs/normailzeText';
+import { scale, moderateScale, verticalScale } from '../../libs/scaling';
 
 import { Colors, Layout } from "../../constants";
 import Feather from 'react-native-vector-icons/Feather';
+
+// component
+import NormalizeText from '../NormalizeText';
 
 /**
  * Set Icon component
@@ -25,17 +31,17 @@ const width = Layout.window.width;
 const height = Layout.window.height;
 
 // header
-const headerHeight = height / 6.5;
+const headerHeight = verticalScale(200);
 const headerTitleHeight = headerHeight / 2;
 const padding = width / 34;
-const iconSize = width / 12;
-const headerTitleFontSize = width / 15;
+const iconSize = scale(25);
+const headerTitleFontSize = scale(20);
 
 // searchBox
 const searchBoxHeight = headerTitleHeight - padding;
-const searchBoxBorderRadius = width / 30;
-const searchBoxIcon = width / 15;
-const searchBoxFontSize = width / 20;
+const searchBoxBorderRadius = scale(30);
+const searchBoxIcon = scale(14);
+const searchBoxFontSize = scale(14);
 
 export class HeaderSearchBox extends React.Component {
   state = {
@@ -65,15 +71,22 @@ export class HeaderSearchBox extends React.Component {
           backgroundColor: backgroundColor ? backgroundColor : Colors.white(1)
         }}>
         </View>
+        <StatusBar
+          barStyle={"light-content"}
+          animated
+          showHideTransition={'fade'}
+          translucent={true}
+          backgroundColor="rgba(0, 0, 0, 0.3)"
+        />
         <View style={[
-          styles.headerHeight,
+          styles.header,
           { backgroundColor: backgroundColor ? backgroundColor : Colors.white(1) }
         ]}>
 
           {/* header title */}
-          <View style={styles.headerTitleHeight}>
+          <View style={styles.headerTitle}>
             {/* left icon */}
-            <View style={styles.headerTitleLeftIcon}>
+            <View style={styles.leftIcon}>
               <TouchableOpacity>
                 <this.state.component name={this.state.iconName} color={iconColor ? iconColor : Colors.white(1)}
                   size={iconSize} />
@@ -81,7 +94,7 @@ export class HeaderSearchBox extends React.Component {
             </View>
 
             {/* title */}
-            <View style={styles.headerTitle}>
+            <View style={styles.title}>
               <Text style={{
                 color: titleColor ? titleColor : Colors.white(1),
                 fontSize: headerTitleFontSize
@@ -135,12 +148,13 @@ export class SearchBox extends React.Component {
         <View style={styles.searchBoxTextInput}>
           <TextInput
             underlineColorAndroid='transparent'
+            // autoCapitalize="none"
             placeholder={this.props.placeholder}
             placeholderTextColor={placeholderTextColor ? placeholderTextColor : Colors.grey}
-            style={{
+            style={[styles.textInput, {
               fontSize: searchBoxFontSize,
-              color: color ? color : Colors.black(1)
-            }}
+              color: color ? color : Colors.black(1),
+            }]}
           />
         </View>
       </View>
