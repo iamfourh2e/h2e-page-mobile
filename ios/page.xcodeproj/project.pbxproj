@@ -76,6 +76,12 @@
 		FABAC729FB45421BACA2B855 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ABF15FD928244089A08E524C /* MaterialCommunityIcons.ttf */; };
 		FC1FAE8DC8C24E66BABBA054 /* libRCTFBSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 198088F86CBD44E08638084C /* libRCTFBSDK.a */; };
 		FDE6BC1207564EA6A1EA3B9F /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 609B1AE6C43444BDB253B307 /* Foundation.ttf */; };
+		1A4E27EA943944BAAA43B736 /* cinema.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E53BA8B543C457485CA5626 /* cinema.png */; };
+		6F0F392A958740889F612E3D /* hotel_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 177CCFCA172A4EB79D87DDCF /* hotel_03.png */; };
+		89067FC9DAE04C76BFE4806D /* restaurant_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 680893EF9E484EC99AE9BCDF /* restaurant_03.png */; };
+		DBD93A63A3894FF7826BF2F8 /* shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 82D3331B53AC411E87B600FE /* shop.png */; };
+		F979E8F8B6E447F79690D02E /* hotel.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A96EEABE546402EAB6C7FAE /* hotel.png */; };
+		37E9B809C37043B6B1D118C8 /* restaurant.png in Resources */ = {isa = PBXBuildFile; fileRef = CF9202AC060F4AF29EF62CE8 /* restaurant.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -492,6 +498,12 @@
 		EEE27A74BA584781BB27017C /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		F5BFD4027D50426B887DFD93 /* libRNToastNative.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNToastNative.a; sourceTree = "<group>"; };
 		FB4D2C364DDB43C4A4CA1A02 /* SystemConfiguration.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		9E53BA8B543C457485CA5626 /* cinema.png */ = {isa = PBXFileReference; name = "cinema.png"; path = "../src/assets/images/cinema.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		177CCFCA172A4EB79D87DDCF /* hotel_03.png */ = {isa = PBXFileReference; name = "hotel_03.png"; path = "../src/assets/images/hotel_03.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		680893EF9E484EC99AE9BCDF /* restaurant_03.png */ = {isa = PBXFileReference; name = "restaurant_03.png"; path = "../src/assets/images/restaurant_03.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		82D3331B53AC411E87B600FE /* shop.png */ = {isa = PBXFileReference; name = "shop.png"; path = "../src/assets/images/shop.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		3A96EEABE546402EAB6C7FAE /* hotel.png */ = {isa = PBXFileReference; name = "hotel.png"; path = "../src/assets/images/hotel.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		CF9202AC060F4AF29EF62CE8 /* restaurant.png */ = {isa = PBXFileReference; name = "restaurant.png"; path = "../src/assets/images/restaurant.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -723,6 +735,12 @@
 				EEE27A74BA584781BB27017C /* SimpleLineIcons.ttf */,
 				70FED7B353734A37B219FC7F /* Zocial.ttf */,
 				4D70C76BA94F4D59804EA887 /* KhmerRB.ttf */,
+				9E53BA8B543C457485CA5626 /* cinema.png */,
+				177CCFCA172A4EB79D87DDCF /* hotel_03.png */,
+				680893EF9E484EC99AE9BCDF /* restaurant_03.png */,
+				82D3331B53AC411E87B600FE /* shop.png */,
+				3A96EEABE546402EAB6C7FAE /* hotel.png */,
+				CF9202AC060F4AF29EF62CE8 /* restaurant.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1475,6 +1493,12 @@
 				A2F18FD167CB4090B545B67E /* Zocial.ttf in Resources */,
 				9493892820CACE9700BE63F6 /* powered_by.png in Resources */,
 				A3FD92AF4B924EFBA144ACAD /* KhmerRB.ttf in Resources */,
+				1A4E27EA943944BAAA43B736 /* cinema.png in Resources */,
+				6F0F392A958740889F612E3D /* hotel_03.png in Resources */,
+				89067FC9DAE04C76BFE4806D /* restaurant_03.png in Resources */,
+				DBD93A63A3894FF7826BF2F8 /* shop.png in Resources */,
+				F979E8F8B6E447F79690D02E /* hotel.png in Resources */,
+				37E9B809C37043B6B1D118C8 /* restaurant.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
