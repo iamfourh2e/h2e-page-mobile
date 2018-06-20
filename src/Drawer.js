@@ -47,11 +47,20 @@ class DrawerContent extends React.Component {
 /*Drawer Navigator*/
 const configRoutes = {
   Root: {
-    screen: TabNav,
+    screen: Screen.Home,
     navigationOptions: {
       drawerLabel: 'ទំព័រដើម',
       drawerIcon: ({tintColor}) => (
         <Feather name="home" size={drawerItemStyles.drawerIconSize} color={tintColor}/>
+      ),
+    }
+  },
+  Profile: {
+    screen: Screen.Profile,
+    navigationOptions: {
+      drawerLabel: 'Profile',
+      drawerIcon: ({tintColor}) => (
+        <Feather name="user" size={drawerItemStyles.drawerIconSize} color={tintColor}/>
       ),
     }
   }

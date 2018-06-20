@@ -13,8 +13,8 @@ import cinemaRoutes from './modules/cinema'
 
 const AppStack = StackNavigator(
   {
-    Index: TabNav,
-    ...cinemaRoutes,
+    Index: Drawer,
+    // ...cinemaRoutes,
   },
   {
     initialRouteName: 'Index',

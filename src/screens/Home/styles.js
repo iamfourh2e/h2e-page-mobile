@@ -1,6 +1,6 @@
 import { StyleSheet, Platform } from 'react-native';
-import { Fonts, FontSizes, Layout, Colors } from '../../../../constants';
-import { scale, verticalScale, moderateScale } from '../../../../libs/scaling';
+import { Fonts, FontSizes, Layout, Colors } from '../../constants';
+import { scale, verticalScale, moderateScale } from '../../libs/scaling';
 
 const width = Layout.window.width;
 const padding = scale(11);
