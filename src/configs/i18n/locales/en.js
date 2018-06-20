@@ -1,6 +1,8 @@
 export default {
   greeting: 'Hello!',
   home: 'Home',
+  page: 'Page',
+  profile: 'Profile',
   success: 'Success',
   cancel: 'Cancel',
   appTitle:'H2E Page',

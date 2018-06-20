@@ -6,8 +6,18 @@ import {
   ActivityIndicator,
   StatusBar
 } from 'react-native';
+import {observer, inject} from 'mobx-react';
+import stores from "../../stores";
+import cinemaRoutes from "../../modules/cinema";
+import Screen from "../index";
 
+@inject('stores')
+@observer
 export default class Login extends React.Component {
+
+  constructor(props){
+    super(props);
+  }
 
   render() {
     return (
@@ -22,10 +32,12 @@ export default class Login extends React.Component {
   }
 
   _signInAsync = () => {
-    this.props.navigation.navigate('App');
+    this.props.navigation.navigate({routeName: 'App', key: 'App'});
   };
 }
 
+@inject('stores')
+@observer
 export class AuthLoading extends React.Component {
   constructor(props) {
     super(props);
@@ -33,9 +45,8 @@ export class AuthLoading extends React.Component {
   }
 
   _bootstrapAsync = async () => {
-    // const userToken = await AsyncStorage.getItem('userToken');
-    const userToken = null;
-    const routeName = userToken ? 'App' : 'Auth';
+    const user = null;
+    const routeName = user ? 'App' : 'Auth';
     this.props.navigation.navigate({routeName: routeName, key: routeName});
   };
 

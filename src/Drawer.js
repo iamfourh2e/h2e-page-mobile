@@ -54,16 +54,7 @@ const configRoutes = {
         <Feather name="home" size={drawerItemStyles.drawerIconSize} color={tintColor}/>
       ),
     }
-  },
-  Home: {
-    screen: Screen.Home,
-    navigationOptions: {
-      drawerLabel: 'ទំព័រដើម',
-      drawerIcon: ({tintColor}) => (
-        <Feather name="home" size={drawerItemStyles.drawerIconSize} color={tintColor}/>
-      ),
-    }
-  },
+  }
 };
 export default Drawer = DrawerNavigator(
   configRoutes,

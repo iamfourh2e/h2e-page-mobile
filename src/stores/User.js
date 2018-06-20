@@ -5,31 +5,28 @@ import FP from '../libs/fp';
 const fromNullAble = (x) => !!x ? FP.Right(x) : FP.Left(null);
 
 class User {
-  @observable users = [];
-
-  @computed
-  get countUser() {
-    return this.users.length;
-  }
+  @observable user = {
+    name: 'h2e',
+    module: 'Cinema',
+    token: ''
+  };
 
   @action getUser = async () => {
     const value = await AsyncStorage.getItem(storage.getUserKey());
     return fromNullAble(value).fold(f => f, g => {
-      const user = JSON.parse(g);
-      this.users = [];
-      this.users.push(user);
+      this.user = JSON.parse(g);
     });
   };
 
   @action addUser = async (obj) => {
-    this.users = [];
+    this.user = {};
     await AsyncStorage.setItem(storage.getUserKey(), JSON.stringify(obj));
-    return this.users.push(obj);
+    return this.user = obj;
   };
 
   @action removeUser = async () => {
     await AsyncStorage.removeItem(storage.getUserKey());
-    return this.users = [];
+    return this.user = {};
   }
 }
 

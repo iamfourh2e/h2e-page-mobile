@@ -1,11 +1,28 @@
 import React from 'react';
 import {Platform} from "react-native";
 import {StackNavigator, SwitchNavigator} from "react-navigation";
+import {Provider} from 'mobx-react';
+//screen
+import TabNav from './Tab';
 import Drawer from "./Drawer";
 import Screen from "./screens"
 import {slideLeftToRightTransition} from "./libs";
-import {Provider} from 'mobx-react';
 import stores from "./stores";
+//routes
+import cinemaRoutes from './modules/cinema'
+
+const AppStack = StackNavigator(
+  {
+    Index: TabNav,
+    ...cinemaRoutes,
+  },
+  {
+    initialRouteName: 'Index',
+    headerMode: 'none',
+    // mode: Platform.OS === 'ios' ? 'modal' : 'card',
+    transitionConfig: () => (Platform.OS === 'ios' ? {} : slideLeftToRightTransition),
+  }
+);
 
 const AuthStack = StackNavigator(
   {Login: Screen.Login},
@@ -13,20 +30,6 @@ const AuthStack = StackNavigator(
     headerMode: 'none',
   }
 );
-const AppStack = StackNavigator(
-  {
-    Drawer: {screen: Screen.Home},
-    Tab2: {screen: Screen.Tab2},
-    Home: {screen: Screen.Home},
-  },
-  {
-    initialRouteName: 'Home',
-    headerMode: 'none',
-    // mode: Platform.OS === 'ios' ? 'modal' : 'card',
-    transitionConfig: () => (Platform.OS === 'ios' ? {} : slideLeftToRightTransition),
-  }
-);
-
 
 const RootNavigator = SwitchNavigator(
   {

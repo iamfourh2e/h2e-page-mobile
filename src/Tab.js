@@ -1,78 +1,55 @@
 import React from 'react';
-// import {TabNavigator} from 'react-navigation';
 import TabNavigator from './components/CustomTabBar/TabNavigator';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import Feather from 'react-native-vector-icons/Feather';
 
 import {I18n} from './configs';
 //Screen
 
 import Screen from './screens';
 
+const tabStyles = {
+  iconSize: 23,
+};
+
 export default TabNav = TabNavigator(
   {
-    HomeTab: {
+    MainHomeTab: {
       screen: Screen.Home,
       navigationOptions: {
         title: 'Home',
         tabBarLabel: () => I18n.t('home'),
         tabBarIcon: ({tintColor, focused}) => (
-          <Ionicons
-            name={focused ? 'ios-home' : 'ios-home-outline'}
-            size={26}
+          <Feather
+            name={focused ? 'home' : 'home'}
+            size={tabStyles.iconSize}
             style={{color: tintColor}}
           />
         ),
       },
     },
-    PostTab: {
-      screen: Screen.Post,
-      navigationOptions: {
-        title: 'Post',
-        tabBarLabel: 'Post',
-        tabBarIcon: ({tintColor, focused}) => (
-          <Ionicons
-            name={focused ? 'ios-create' : 'ios-create-outline'}
-            size={26}
-            style={{color: tintColor}}
-          />
-        ),
-      },
-    },
-    MessageTab: {
-      screen: Screen.Message,
-      navigationOptions: {
-        title: 'Message',
-        tabBarLabel: 'Message',
-        tabBarIcon: ({tintColor, focused}) => (
-          <Ionicons
-            name={focused ? 'ios-chatbubbles' : 'ios-chatbubbles-outline'}
-            size={26}
-            style={{color: tintColor}}
-          />
-        ),
-      },
-    },
-    ProfileTab: {
+    MainProfileTab: {
       screen: Screen.Profile,
       navigationOptions: {
         title: 'Profile',
+        tabBarLabel: () => I18n.t('profile'),
         tabBarIcon: ({tintColor, focused}) => (
-          <Ionicons
-            name={focused ? 'ios-person' : 'ios-person-outline'}
-            size={26}
+          <Feather
+            name={focused ? 'user' : 'user'}
+            size={tabStyles.iconSize}
             style={{color: tintColor}}
           />
         ),
       },
     },
-    TestTab: {
-      screen: Screen.Test,
+    MainPagesTab: {
+      screen: Screen.Pages,
       navigationOptions: {
-        title: 'Test',
+        title: 'Pages',
+        tabBarLabel: () => I18n.t('page'),
         tabBarIcon: ({tintColor, focused}) => (
-          <Ionicons
-            name={focused ? 'ios-bug' : 'ios-bug-outline'}
-            size={26}
+          <Feather
+            name={focused ? 'flag' : 'flag'}
+            size={tabStyles.iconSize}
             style={{color: tintColor}}
           />
         ),
