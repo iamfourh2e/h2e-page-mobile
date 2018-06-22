@@ -3,8 +3,10 @@ import ActionSheetModal from './ActionSheetModal';
 import AppBar from './AppBar';
 import Badge from './Badge';
 import Modal from './Modal';
-import { HeaderSearchBox, SearchBox } from './Header/headerSearchBox';
+import Header from './Header';
 import Swiper from './ReactNativeSwiper';
+import ListItems from './ListItems';
+import HeaderContent from './HeaderContent';
 // import Button from './Button';
 import TouchableItem from './TouchableItem'; //for drawer
 
@@ -15,9 +17,10 @@ export {
   AppBar,
   Badge,
   Modal,
-  HeaderSearchBox,
-  SearchBox,
+  Header,
   Swiper,
+  ListItems,
+  HeaderContent,
   // Button,
   TouchableItem
 }

@@ -1,12 +1,12 @@
 import React from 'react';
-import {Platform} from "react-native";
-import {StackNavigator, SwitchNavigator} from "react-navigation";
-import {Provider} from 'mobx-react';
+import { Platform } from "react-native";
+import { StackNavigator, SwitchNavigator } from "react-navigation";
+import { Provider } from 'mobx-react';
 //screen
 import TabNav from './Tab';
 import Drawer from "./Drawer";
 import Screen from "./screens"
-import {slideLeftToRightTransition} from "./libs";
+import { slideLeftToRightTransition } from "./libs";
 import stores from "./stores";
 //routes
 import cinemaRoutes from './modules/cinema'
@@ -14,6 +14,7 @@ import cinemaRoutes from './modules/cinema'
 const AppStack = StackNavigator(
   {
     Index: Drawer,
+    CategoryList: Screen.CategoryList
     // ...cinemaRoutes,
   },
   {
@@ -25,7 +26,7 @@ const AppStack = StackNavigator(
 );
 
 const AuthStack = StackNavigator(
-  {Login: Screen.Login},
+  { Login: Screen.Login },
   {
     headerMode: 'none',
   }
@@ -45,7 +46,7 @@ const RootNavigator = SwitchNavigator(
 
 export default () => (
   <Provider stores={stores}>
-    <RootNavigator/>
+    <RootNavigator />
   </Provider>
 );
 

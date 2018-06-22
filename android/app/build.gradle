@@ -99,7 +99,7 @@ android {
 
     defaultConfig {
         applicationId "com.h2e.page"
-        minSdkVersion 23
+        minSdkVersion 22
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"

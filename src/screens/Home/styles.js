@@ -15,21 +15,24 @@ export const styles = StyleSheet.create({
         flex: 1,
     },
     contentWrapper: {
-        height: contentCategoryHeight,
+        // height: contentCategoryHeight,
+        flex: 1,
         paddingRight: padding,
         paddingLeft: padding
     },
     contentSlide: {
         height: verticalScale(180),
-        width: width
+        // width: width,
+        // alignSelf: 'stretch'
     },
     swiperWrap: {
-        height: verticalScale(180)
+        // height: verticalScale(180)
     },
     slideImage: {
         height: verticalScale(180),
         width: width,
-        resizeMode: "contain"
+        // alignSelf: 'stretch',
+        resizeMode:'cover'
     },
     contentHeader: {
         height: categoryHeaderHeight,
@@ -41,11 +44,12 @@ export const styles = StyleSheet.create({
     },
     contentHeaderTextTitleLeft: {
         color: Colors.black(1),
-        fontSize: scale(17)
+        fontSize: scale(17),
+        fontWeight: Platform.OS == 'ios' ? '300' : '400',
     },
     contentHeaderTextTitleRight: {
-        color: Colors.black(1),
-        fontSize: scale(12),
+        color: Colors.skyBlue,
+        fontSize: scale(14),
         textAlign: 'right'
     },
     categoryItems: {

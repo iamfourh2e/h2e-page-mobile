@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   TouchableOpacity,
   Text,
@@ -9,23 +9,21 @@ import {
   Dimensions,
   Platform
 } from 'react-native';
-import {I18n} from '../../configs';
-import {Toast} from '../../libs';
+import { I18n } from '../../configs';
+import { Toast } from '../../libs';
 import {
-  AppBar,
-  AlertModal,
-  ActionSheetModal,
-  HeaderSearchBox,
-  SearchBox,
-  Swiper
+  Header,
+  Swiper,
+  ListItems,
+  HeaderContent
 } from '../../components';
-import {scale, verticalScale, moderateScale} from '../../libs/scaling';
+import { scale, verticalScale, moderateScale } from '../../libs/scaling';
 
-import {Colors, Layout, Images} from "../../constants";
+import { Colors, Layout, Images } from "../../constants";
 import Feather from 'react-native-vector-icons/Feather';
 
 // styles
-import {styles} from './styles';
+import { styles } from './styles';
 
 const Props = {};
 
@@ -37,29 +35,27 @@ const shop = I18n.t('shop');
 const datas = [
   {
     image: 'https://tastefinefood.com.au/wp-content/uploads/2015/02/cropped-Cup-o-Noodles-italian-food-1920x1080-e1438669573394.jpg'
-  },
-  {
-    image: 'https://tastefinefood.com.au/wp-content/uploads/2015/02/cropped-Cup-o-Noodles-italian-food-1920x1080-e1438669573394.jpg'
+  }, {
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGHxKkoeWUUEGh9vOkJa5Do2MWEu9mIuNOJlEPzANDzTjaPb1KYQ'
+  }, {
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVxdHsRUItZWoDzQYg5lCpU9h_M6Sfd2H6sxRVTNdMdeSKzzjr5A'
+  }, {
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeP-2FKxplPaoSViEnGWfauD2PGJWVo0ErYcK5S2wEV_yd2yKF4A'
+  }
+  , {
+    image: 'https://disneynerd.files.wordpress.com/2018/01/movies-2017.jpg?w=1920&h=621&crop=1'
+  }, {
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIZUqHZM8ZeTpqgousO9qSPOfIm1jI3loJ_EBvq7bUAlKC9t-acQ'
+  }, {
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRugt4jP46d2ZL_SrLAn7l5iDSD_KNhPJP6AXIFYiN78SSycWY1LQ'
   }
 ];
 
 const categoryItems = [
   {
     image: Images.cinema,
-    title: cinema
-  }, {
-    image: Images.restaurant,
-    title: restaurant
-  }, {
-    image: Images.hotel,
-    title: hotel
-  }, {
-    image: Images.shop,
-    title: shop
-  },
-  {
-    image: Images.cinema,
-    title: cinema
+    title: cinema,
+    navigation: 'CategoryList'
   }, {
     image: Images.restaurant,
     title: restaurant
@@ -143,6 +139,10 @@ const height = Layout.window.height;
 const rateIconSize = scale(12);
 
 export default class Home extends Component<Props> {
+  constructor(props) {
+    super(props);
+  }
+
   getWidth() {
     return Dimensions.get('window').width;
   }
@@ -153,7 +153,7 @@ export default class Home extends Component<Props> {
         <View key={k}>
           <Image
             style={styles.slideImage}
-            source={{uri: data.image}}
+            source={{ uri: data.image }}
           />
         </View>
       )
@@ -161,11 +161,15 @@ export default class Home extends Component<Props> {
   }
 
   renderCategoryItems() {
+    const { navigation } = this.props;
     return categoryItems.map((data, k) => {
       return (
         <View key={k}>
-          <TouchableOpacity style={styles.categoryItemsDetail}>
-            <Image source={data.image} style={styles.categoryImage}/>
+          <TouchableOpacity
+            style={styles.categoryItemsDetail}
+            onPress={() => navigation.navigate({ routeName: data.navigation, key: data.navigation })}
+          >
+            <Image source={data.image} style={styles.categoryImage} />
             <Text style={styles.categoryTitle}>{data.title}</Text>
           </TouchableOpacity>
         </View>
@@ -175,14 +179,13 @@ export default class Home extends Component<Props> {
 
   render() {
     const backgroundColor = Colors.success;
-    const color = Colors.white(1);
+    const color = Colors.black(1);
     const appTitle = I18n.t('appTitle');
     const search = I18n.t('search');
     const category = I18n.t('category');
     const more = I18n.t('more');
     const popular = I18n.t('popular');
     const recommend = I18n.t('recommend');
-
     const width = this.getWidth();
 
     return (
@@ -190,19 +193,13 @@ export default class Home extends Component<Props> {
         flex: 1,
         backgroundColor: Colors.white(1)
       }}>
-        <HeaderSearchBox
+        <Header
           headerTitle={appTitle}
-          backgroundColor={backgroundColor}
-          titleColor={color}
-          iconComponent="Feather"
-          iconName="menu"
-          iconColor={color}
-        >
-          <SearchBox
-            backgroundColor={Colors.white(1)}
-            placeholder={search}
-          />
-        </HeaderSearchBox>
+          headerBackground={backgroundColor}
+          placeholder={search}
+          color={color}
+          iconColor={Colors.success}
+        />
 
         <View style={styles.content}>
           <ScrollView showsVerticalScrollIndicator={false}>
@@ -219,16 +216,15 @@ export default class Home extends Component<Props> {
 
             {/* category */}
             <View style={styles.contentWrapper}>
-              <ContentHeader
+              <HeaderContent
                 title={category}
-                more={more}
               />
               {/* category items */}
               <View style={styles.categoryItems}>
                 <ScrollView
                   horizontal={true}
                   showsHorizontalScrollIndicator={false}
-                  contentContainerStyle={{flexGrow: 1}}
+                  contentContainerStyle={{ flexGrow: 1 }}
                 >
                   {this.renderCategoryItems()}
                 </ScrollView>
@@ -237,7 +233,7 @@ export default class Home extends Component<Props> {
 
             {/* popular items */}
             <View style={styles.contentWrapper}>
-              <ContentHeader
+              <HeaderContent
                 title={popular}
                 more={more}
               />
@@ -249,7 +245,7 @@ export default class Home extends Component<Props> {
 
             {/* recommend for you */}
             <View style={styles.contentWrapper}>
-              <ContentHeader
+              <HeaderContent
                 title={recommend}
                 more={more}
               />
@@ -258,84 +254,21 @@ export default class Home extends Component<Props> {
                 scrollHorizontal={true}
               />
             </View>
-          </ScrollView>
 
+            {/* more */}
+            <View style={styles.contentWrapper}>
+              <HeaderContent
+                title={more}
+              />
+              <ListItems
+                data={recommendItems}
+              />
+            </View>
+
+          </ScrollView>
         </View>
       </View>
     );
   }
 }
 
-export class ContentHeader extends Component {
-  render() {
-    const {title, more} = this.props;
-    return (
-      <View style={styles.contentHeader}>
-        <View style={styles.contentHeaderTitle}>
-          <Text style={styles.contentHeaderTextTitleLeft}>{title}</Text>
-        </View>
-        <View style={styles.contentHeaderTitle}>
-          <TouchableOpacity>
-            <Text style={styles.contentHeaderTextTitleRight}>{more}</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-    )
-  }
-}
-
-export class ListItems extends Component {
-  renderListItems = (items, scrollHorizontal) => {
-    const borderRight = {
-      borderRightWidth: scale(0.25),
-      borderRightColor: Colors.success,
-      paddingRight: scale(15),
-      marginRight: scale(15)
-    };
-    const borderBottom = {
-      borderBottomWidth: scale(0.25),
-      borderBottomColor: Colors.success
-    };
-    return items.map((data, k) => {
-      items.length === k;
-      return (
-        <View key={k}>
-          <TouchableOpacity style={styles.contentItem}>
-            <View style={[styles.itemDetail,
-              items.length - 1 != k ? scrollHorizontal ? borderRight : borderBottom : null
-            ]}
-            >
-              <View style={styles.itemDetailImage}>
-                <Image
-                  style={styles.logo}
-                  source={{uri: data.logo}}
-                />
-              </View>
-              <View style={styles.itemDetailText}>
-                <Text style={styles.companyName}>{data.companyName}</Text>
-                <Text style={styles.description}>{data.description}</Text>
-                <View style={styles.rate}>
-                  <Text style={styles.rateValue}>{data.rateValue}</Text>
-                  <Feather name='star' color={Colors.lightYellow} size={rateIconSize}/>
-                </View>
-              </View>
-            </View>
-          </TouchableOpacity>
-        </View>
-      )
-    })
-  }
-
-  render() {
-    const {data, scrollHorizontal} = this.props;
-    return (
-      <ScrollView
-        horizontal={scrollHorizontal}
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={{flexGrow: 1}}
-      >
-        {this.renderListItems(data, scrollHorizontal)}
-      </ScrollView>
-    )
-  }
-}
