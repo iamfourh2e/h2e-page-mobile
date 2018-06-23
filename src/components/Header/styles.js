@@ -16,7 +16,23 @@ export const styles = StyleSheet.create({
         paddingRight: padding,
         justifyContent: 'center'
     },
-
+    headerTitle: {
+        flexDirection: 'row',
+        height: searchBoxHeight
+    },
+    title: {
+        flex: 1,
+        justifyContent: 'center'
+    },
+    titleText: {
+        fontSize: scale(20)
+    },
+    headerIcon: {
+        height: searchBoxHeight,
+        width: searchBoxHeight,
+        justifyContent: 'center',
+        // alignItems: 'center'
+    },
     searchBoxWrapper: {
         height: searchBoxHeight,
         borderRadius: scale(5),
@@ -33,7 +49,7 @@ export const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     textInput: {
-        height: searchBoxHeight,
+        height: searchBoxHeight + 10,
         fontSize: scale(15)
     }
 });
