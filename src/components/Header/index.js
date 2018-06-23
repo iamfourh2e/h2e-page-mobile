@@ -54,15 +54,7 @@ export default class Header extends React.Component {
     }
 
     render() {
-        const {
-            headerBackground,
-            searchBoxBackground,
-            placeholder,
-            placeholderTextColor,
-            color,
-            iconColor
-        } = this.props;
-
+        const { headerBackground } = this.props;
         return (
             // '#27ae60'
             <View>
@@ -82,64 +74,67 @@ export default class Header extends React.Component {
                     styles.header,
                     { backgroundColor: headerBackground ? headerBackground : Colors.white(1) }
                 ]}>
-                    <View style={[styles.searchBoxWrapper, {
-                        backgroundColor: searchBoxBackground ? searchBoxBackground : Colors.white(1)
-                    }]}>
-                        <View style={styles.searchBoxIconLeft}>
-                            <TouchableOpacity>
-                                <Feather name='menu' size={scale(25)} color={iconColor ? iconColor : Colors.grey} />
-                            </TouchableOpacity>
-                        </View>
-                        <View style={styles.searchBoxTextInput}>
-                            <TextInput
-                                underlineColorAndroid='transparent'
-                                placeholder='search'
-                                placeholder={placeholder}
-                                placeholderTextColor={placeholderTextColor ? placeholderTextColor : Colors.grey}
-                                style={[styles.textInput, {
-                                    color: color ? color : Colors.black(1)
-                                }]}
-                            />
-                        </View>
-                    </View>
+                    {this.props.children}
                 </View>
             </View >
         );
     }
 }
 
+// HeaderTitle
+export class HeaderTitle extends React.Component {
+    render() {
+        const { title } = this.props;
+        return (
+            <View style={styles.headerTitle}>
+                {this.props.children}
+                <View style={styles.title}>
+                    <Text style={[styles.titleText, { color: Colors.white(1) }]}>{title}</Text>
+                </View>
+            </View>
+        )
+    }
+}
+
+export class HeaderIcon extends React.Component {
+    render() {
+        const { style } = this.props;
+        return (
+            <View style={[styles.headerIcon, style]}>
+                {this.props.children}
+            </View>
+        )
+    }
+}
+
+// SearchBox
 export class SearchBox extends React.Component {
     render() {
         const {
+            searchBoxBackground,
             placeholder,
-            backgroundColor,
-            borderColor,
-            borderWidth,
+            placeholderTextColor,
             color,
-            placeholderTextColor
+            iconColor
         } = this.props;
         return (
-            <View style={[
-                styles.searchBoxHeight,
-                {
-                    backgroundColor: '#fff',
-                    // backgroundColor: backgroundColor ? backgroundColor : Colors.black(1),
-                    borderColor: borderColor ? borderColor : Colors.white(1),
-                    borderWidth: borderWidth ? borderWidth : 0
-                }
-            ]}>
-                <View style={styles.searchBoxIconLeft}>
-                    <Feather name="search" size={searchBoxIcon} color={Colors.grey} />
-                </View>
+            <View style={[styles.searchBoxWrapper, {
+                backgroundColor: searchBoxBackground ? searchBoxBackground : Colors.white(1)
+            }]}>
+                {this.props.children}
+                {/* <View style={styles.searchBoxIconLeft}>
+                    <TouchableOpacity>
+                        <Feather name='menu' size={scale(25)} color={iconColor ? iconColor : Colors.grey} />
+                    </TouchableOpacity>
+                </View> */}
                 <View style={styles.searchBoxTextInput}>
                     <TextInput
                         underlineColorAndroid='transparent'
-                        // autoCapitalize="none"
-                        placeholder={this.props.placeholder}
+                        placeholder='search'
+                        placeholder={placeholder}
                         placeholderTextColor={placeholderTextColor ? placeholderTextColor : Colors.grey}
                         style={[styles.textInput, {
-                            fontSize: searchBoxFontSize,
-                            color: color ? color : Colors.black(1),
+                            color: color ? color : Colors.black(1)
                         }]}
                     />
                 </View>

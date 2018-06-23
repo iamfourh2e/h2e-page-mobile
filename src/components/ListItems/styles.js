@@ -14,6 +14,7 @@ export const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     itemDetailText: {
+        flex: 1,
         justifyContent: 'center'
     },
     itemDetailImage: {
@@ -45,5 +46,10 @@ export const styles = StyleSheet.create({
     rateValue: {
         fontSize: scale(12),
         color: Colors.lightYellow
+    },
+    rightIcon: {
+        height: itemDetailHeight,
+        width: verticalScale(25),
+        justifyContent: 'center'
     }
 });

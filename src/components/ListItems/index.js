@@ -49,6 +49,13 @@ export default class ListItems extends Component {
                                     <Feather name='star' color={Colors.lightYellow} size={rateIconSize} />
                                 </View>
                             </View>
+                            {
+                                !scrollHorizontal ? 
+                                <View style={styles.rightIcon}>
+                                    <Feather name="chevron-right" color={Colors.lightGrey} size={25}/>
+                                </View> : null
+                            }
+
                         </View>
                     </TouchableOpacity>
                 </View>

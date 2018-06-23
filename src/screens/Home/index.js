@@ -13,6 +13,8 @@ import { I18n } from '../../configs';
 import { Toast } from '../../libs';
 import {
   Header,
+  HeaderIcon,
+  SearchBox,
   Swiper,
   ListItems,
   HeaderContent
@@ -54,8 +56,7 @@ const datas = [
 const categoryItems = [
   {
     image: Images.cinema,
-    title: cinema,
-    navigation: 'CategoryList'
+    title: cinema
   }, {
     image: Images.restaurant,
     title: restaurant
@@ -167,7 +168,7 @@ export default class Home extends Component<Props> {
         <View key={k}>
           <TouchableOpacity
             style={styles.categoryItemsDetail}
-            onPress={() => navigation.navigate({ routeName: data.navigation, key: data.navigation })}
+            onPress={() => navigation.navigate({ routeName: "CategoryList", key: "CategoryList", params: data.title })}
           >
             <Image source={data.image} style={styles.categoryImage} />
             <Text style={styles.categoryTitle}>{data.title}</Text>
@@ -178,6 +179,7 @@ export default class Home extends Component<Props> {
   }
 
   render() {
+    const { navigation } = this.props;
     const backgroundColor = Colors.success;
     const color = Colors.black(1);
     const appTitle = I18n.t('appTitle');
@@ -193,13 +195,21 @@ export default class Home extends Component<Props> {
         flex: 1,
         backgroundColor: Colors.white(1)
       }}>
-        <Header
-          headerTitle={appTitle}
-          headerBackground={backgroundColor}
-          placeholder={search}
-          color={color}
-          iconColor={Colors.success}
-        />
+        <Header headerBackground={backgroundColor}>
+          <SearchBox
+            placeholder={search}
+            color={color}
+            iconColor={Colors.success}
+          >
+            <HeaderIcon style={{ alignItems: 'center' }}>
+              <TouchableOpacity
+                onPress={() => navigation.navigate({ routeName: "DrawerToggle", key: "DrawerToggle" })}
+              >
+                <Feather name='menu' color={Colors.success} size={scale(25)} />
+              </TouchableOpacity>
+            </HeaderIcon>
+          </SearchBox>
+        </Header>
 
         <View style={styles.content}>
           <ScrollView showsVerticalScrollIndicator={false}>
