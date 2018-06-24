@@ -76,7 +76,7 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string/>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Entypo.ttf</string>
@@ -91,6 +91,11 @@
 		<string>SimpleLineIcons.ttf</string>
 		<string>Zocial.ttf</string>
 		<string>KhmerRB.ttf</string>
+		<string>Battambang-Bold.ttf</string>
+		<string>Battambang.ttf</string>
+		<string>KhPreyVeng.ttf</string>
+		<string>Moul.ttf</string>
+		<string>H2Eicon.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

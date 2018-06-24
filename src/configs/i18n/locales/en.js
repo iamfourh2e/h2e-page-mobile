@@ -1,5 +1,10 @@
 export default {
   greeting: 'Hello!',
+  goodMorning: 'Good Morning',
+  goodAfternoon: 'Good Afternoon',
+  goodEvening: 'Good Evening',
+  goodNight: 'Good Night',
+  logOut: 'Log out',
   home: 'Home',
   page: 'Page',
   profile: 'Profile',

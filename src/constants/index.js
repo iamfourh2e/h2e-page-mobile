@@ -37,14 +37,14 @@ export const Layout = {
 };
 
 export const Fonts = {
-  bold: null,
-  regular: null,
-  appBar: null
-  // battambang: 'Battambang',
-  // battambangBold: 'Battambang-Bold',
-  // khpreyveng: 'KhPreyVeng',
-  // moul: 'Moul',
-  // wbIcon: Platform.OS === 'android' ? 'WBIcon' : 'icomoon'
+  bold: 'Battambang-Bold',
+  regular: 'Battambang',
+  appBar: null,
+  battambang: 'Battambang',
+  battambangBold: 'Battambang-Bold',
+  khpreyveng: 'KhPreyVeng',
+  moul: 'Moul',
+  h2eIcon: Platform.OS === 'android' ? 'H2Eicon' : 'icomoon'
 };
 
 export const Colors = {
@@ -129,6 +129,7 @@ export const ToastStyles = (type) => {
 
 export const Images = {
   cinema: require('../assets/images/cinema.png'),
+  user: require('../assets/images/user.png'),
   restaurant: require('../assets/images/restaurant.png'),
   hotel: require('../assets/images/hotel.png'),
   shop: require('../assets/images/shop.png'),

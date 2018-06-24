@@ -1,5 +1,10 @@
 export default {
   greeting: 'សួស្តី!',
+  goodMorning: 'អរុណសួស្តី!',
+  goodAfternoon: 'ទិវាសួស្ដី!',
+  goodEvening: 'សាយ័ណ្ហសួស្ដី!',
+  goodNight: 'រាត្រីសួស្តី!',
+  logOut: 'ចាកចេញ',
   home: 'ទំព័រដើម',
   page: 'ទំព័រ',
   profile: 'អំពីខ្ញុំ',
