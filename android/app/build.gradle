@@ -137,6 +137,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-image-crop-picker')
     compile project(':react-native-fcm')
     compile project(':react-native-toast-native')
     compile project(':react-native-restart')

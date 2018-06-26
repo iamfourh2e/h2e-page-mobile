@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.facebook.CallbackManager;
 import com.facebook.react.ReactApplication;
+import com.reactnative.ivpusic.imagepicker.PickerPackage;
 import com.evollu.react.fcm.FIRMessagingPackage;
 import com.toast.RCTToastPackage;
 import com.avishayil.rnrestart.ReactNativeRestartPackage;
@@ -56,6 +57,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
               new MainReactPackage(),
+            new PickerPackage(),
             new FIRMessagingPackage(),
               new RCTToastPackage(),
               new ReactNativeRestartPackage(),

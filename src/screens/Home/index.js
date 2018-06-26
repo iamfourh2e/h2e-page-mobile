@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
   TouchableOpacity,
   Text,
@@ -9,8 +9,9 @@ import {
   Dimensions,
   Platform
 } from 'react-native';
-import { I18n } from '../../configs';
-import { Toast } from '../../libs';
+import AsyncImageAnimated from 'react-native-async-image-animated';
+import {I18n} from '../../configs';
+import {Toast} from '../../libs';
 import {
   Header,
   HeaderIcon,
@@ -19,13 +20,13 @@ import {
   ListItems,
   HeaderContent
 } from '../../components';
-import { scale, verticalScale, moderateScale } from '../../libs/scaling';
+import {scale, verticalScale, moderateScale} from '../../libs/scaling';
 
-import { Colors, Layout, Images } from "../../constants";
+import {Colors, Layout, Images} from "../../constants";
 import Feather from 'react-native-vector-icons/Feather';
 
 // styles
-import { styles } from './styles';
+import {styles} from './styles';
 
 const Props = {};
 
@@ -154,7 +155,7 @@ export default class Home extends Component<Props> {
         <View key={k}>
           <Image
             style={styles.slideImage}
-            source={{ uri: data.image }}
+            source={{uri: data.image}}
           />
         </View>
       )
@@ -162,15 +163,23 @@ export default class Home extends Component<Props> {
   }
 
   renderCategoryItems() {
-    const { navigation } = this.props;
+    const {navigation} = this.props;
     return categoryItems.map((data, k) => {
       return (
         <View key={k}>
           <TouchableOpacity
             style={styles.categoryItemsDetail}
-            onPress={() => navigation.navigate({ routeName: "CategoryList", key: "CategoryList", params: data.title })}
+            onPress={() => navigation.navigate({routeName: "CategoryList", key: "CategoryList", params: data.title})}
           >
-            <Image source={data.image} style={styles.categoryImage} />
+            {/*<Image source={data.image} style={styles.categoryImage} />*/}
+            <AsyncImageAnimated
+              source={{
+                uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQBUAwVajM4oUe4qipZ5UCs2oxLAvOQbWGGQrhHYCDtXT8RutQaw'
+              }}
+              placeholderColor={'#cfd8dc'}
+              style={styles.categoryImage}
+            />
+
             <Text style={styles.categoryTitle}>{data.title}</Text>
           </TouchableOpacity>
         </View>
@@ -179,7 +188,7 @@ export default class Home extends Component<Props> {
   }
 
   render() {
-    const { navigation } = this.props;
+    const {navigation} = this.props;
     const backgroundColor = Colors.success;
     const color = Colors.black(1);
     const appTitle = I18n.t('appTitle');
@@ -201,11 +210,11 @@ export default class Home extends Component<Props> {
             color={color}
             iconColor={Colors.success}
           >
-            <HeaderIcon style={{ alignItems: 'center' }}>
+            <HeaderIcon style={{alignItems: 'center'}}>
               <TouchableOpacity
-                onPress={() => navigation.navigate({ routeName: "DrawerToggle", key: "DrawerToggle" })}
+                onPress={() => navigation.navigate({routeName: "DrawerToggle", key: "DrawerToggle"})}
               >
-                <Feather name='menu' color={Colors.success} size={scale(25)} />
+                <Feather name='menu' color={Colors.success} size={scale(25)}/>
               </TouchableOpacity>
             </HeaderIcon>
           </SearchBox>
@@ -234,7 +243,7 @@ export default class Home extends Component<Props> {
                 <ScrollView
                   horizontal={true}
                   showsHorizontalScrollIndicator={false}
-                  contentContainerStyle={{ flexGrow: 1 }}
+                  contentContainerStyle={{flexGrow: 1}}
                 >
                   {this.renderCategoryItems()}
                 </ScrollView>

@@ -4456,6 +4456,10 @@ react-native-animatable@^1.2.3, react-native-animatable@^1.3.0:
   dependencies:
     prop-types "^15.5.10"
 
+react-native-async-image-animated@^4.3.0:
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/react-native-async-image-animated/-/react-native-async-image-animated-4.3.0.tgz#692569ab237f409d21f3dca2929c4adaf4bd4f59"
+
 react-native-dismiss-keyboard@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/react-native-dismiss-keyboard/-/react-native-dismiss-keyboard-1.0.0.tgz#32886242b3f2317e121f3aeb9b0a585e2b879b49"
@@ -4505,6 +4509,10 @@ react-native-i18n@^2.0.12:
   resolved "https://registry.yarnpkg.com/react-native-i18n/-/react-native-i18n-2.0.12.tgz#4a503cc73b2fe55e8518f6d4a1340d3b449d8d1a"
   dependencies:
     i18n-js "^3.0.3"
+
+react-native-image-crop-picker@^0.20.3:
+  version "0.20.3"
+  resolved "https://registry.yarnpkg.com/react-native-image-crop-picker/-/react-native-image-crop-picker-0.20.3.tgz#565d69c1764e96abef23871fe4d6d58b1ee35e18"
 
 react-native-meteor@1.2.0:
   version "1.2.0"

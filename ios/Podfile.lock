@@ -10,17 +10,17 @@ PODS:
   - FirebaseAnalytics (5.0.1):
     - FirebaseCore (~> 5.0)
     - FirebaseInstanceID (~> 3.0)
-    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
     - nanopb (~> 0.3)
   - FirebaseAuth (5.0.1):
     - FirebaseCore (~> 5.0)
     - GTMSessionFetcher/Core (~> 1.1)
   - FirebaseCore (5.0.3):
-    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
   - FirebaseInstanceID (3.1.0):
     - FirebaseCore (~> 5.0)
   - GoogleToolboxForMac/Defines (2.1.4)
-  - "GoogleToolboxForMac/NSData+zlib (2.1.4)":
+  - GoogleToolboxForMac/NSData+zlib (2.1.4):
     - GoogleToolboxForMac/Defines (= 2.1.4)
   - GTMSessionFetcher/Core (1.1.15)
   - nanopb (0.3.8):
@@ -28,21 +28,66 @@ PODS:
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
+  - QBImagePickerController (3.4.0)
+  - React/Core (0.54.4):
+    - yoga (= 0.54.4.React)
+  - React/fishhook (0.54.4)
+  - React/RCTActionSheet (0.54.4):
+    - React/Core
+  - React/RCTAnimation (0.54.4):
+    - React/Core
+  - React/RCTBlob (0.54.4):
+    - React/Core
+  - React/RCTGeolocation (0.54.4):
+    - React/Core
+  - React/RCTImage (0.54.4):
+    - React/Core
+    - React/RCTNetwork
+  - React/RCTLinkingIOS (0.54.4):
+    - React/Core
+  - React/RCTNetwork (0.54.4):
+    - React/Core
+  - React/RCTSettings (0.54.4):
+    - React/Core
+  - React/RCTText (0.54.4):
+    - React/Core
+  - React/RCTVibration (0.54.4):
+    - React/Core
+  - React/RCTWebSocket (0.54.4):
+    - React/Core
+    - React/fishhook
+    - React/RCTBlob
+  - RNImageCropPicker (0.20.3):
+    - QBImagePickerController
+    - React/Core
+    - RSKImageCropper
+  - RSKImageCropper (2.0.1)
+  - yoga (0.54.4.React)
 
 DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
+  - React/Core (from `../node_modules/react-native`)
+  - React/RCTActionSheet (from `../node_modules/react-native`)
+  - React/RCTAnimation (from `../node_modules/react-native`)
+  - React/RCTGeolocation (from `../node_modules/react-native`)
+  - React/RCTImage (from `../node_modules/react-native`)
+  - React/RCTLinkingIOS (from `../node_modules/react-native`)
+  - React/RCTNetwork (from `../node_modules/react-native`)
+  - React/RCTSettings (from `../node_modules/react-native`)
+  - React/RCTText (from `../node_modules/react-native`)
+  - React/RCTVibration (from `../node_modules/react-native`)
+  - React/RCTWebSocket (from `../node_modules/react-native`)
+  - RNImageCropPicker (from `../node_modules/react-native-image-crop-picker`)
+  - yoga (from `../node_modules/react-native/ReactCommon/yoga/yoga.podspec`)
 
-SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
-    - Firebase
-    - FirebaseAnalytics
-    - FirebaseAuth
-    - FirebaseCore
-    - FirebaseInstanceID
-    - GoogleToolboxForMac
-    - GTMSessionFetcher
-    - nanopb
+EXTERNAL SOURCES:
+  React:
+    :path: ../node_modules/react-native
+  RNImageCropPicker:
+    :path: ../node_modules/react-native-image-crop-picker
+  yoga:
+    :path: ../node_modules/react-native/ReactCommon/yoga/yoga.podspec
 
 SPEC CHECKSUMS:
   Firebase: 25ed0412036d7d008568d1fb4d2e9d81ea8a0a2c
@@ -53,7 +98,12 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
   GTMSessionFetcher: 5fa5b80fd20e439ef5f545fb2cb3ca6c6714caa2
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
+  QBImagePickerController: d54cf93db6decf26baf6ed3472f336ef35cae022
+  React: c237e42de9c70e5cac6eeb52b4cfd3a0910c1f00
+  RNImageCropPicker: 32ca4b9fef4e1b7b85ba69494242122948117e06
+  RSKImageCropper: 50d5a3e4160f0309b14d75b89d5ae2f496d56e0d
+  yoga: 55da126afc384965b96bff46652464373b330add
 
-PODFILE CHECKSUM: c78e5b7bc99c82ead18e7f329c0e88e36e83c8fe
+PODFILE CHECKSUM: df55731f16ab008fcb20d8eeb23e952d7ef34bdb
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.4.0

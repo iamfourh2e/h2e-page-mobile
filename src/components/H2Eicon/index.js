@@ -3,7 +3,7 @@ import {createIconSet} from 'react-native-vector-icons';
 import glyphMap from '../../assets/fonts/glyphmaps/H2Eicon.json';
 import {Platform} from "react-native";
 
-const Icon = createIconSet(glyphMap, Platform.OS === 'android' ? 'WBIcon' : 'icomoon');
+const Icon = createIconSet(glyphMap, Platform.OS === 'android' ? 'H2Eicon' : 'icomoon');
 
 export default class extends React.Component {
   render() {
