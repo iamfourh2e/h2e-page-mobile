@@ -19,7 +19,7 @@ import {
   Swiper,
   ListItems,
   HeaderContent
-} from '../../components';
+} from '@components';
 import {scale, verticalScale, moderateScale} from '../../libs/scaling';
 
 import {Colors, Layout, Images} from "../../constants";
