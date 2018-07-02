@@ -4,10 +4,10 @@ import { scale, moderateScale, verticalScale } from '../../libs/scaling';
 
 // header
 const headerHeight = verticalScale(65);
-const padding = scale(11);
+const padding = scale(10);
 
 // searchBox
-const searchBoxHeight = verticalScale(45);
+const searchBoxHeight = verticalScale(50);
 
 export const styles = StyleSheet.create({
     header: {

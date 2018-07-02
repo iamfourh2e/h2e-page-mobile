@@ -91,7 +91,6 @@ const hotelItems = [
 export default class CategoryList extends Component {
     render() {
         const { navigation } = this.props;
-        console.log(navigation)
         const backgroundColor = Colors.success;
         const headerTitle = navigation.state.params;
         return (

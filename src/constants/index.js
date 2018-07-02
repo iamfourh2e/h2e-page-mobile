@@ -27,7 +27,7 @@ export const Layout = {
   notchHeight,
   isSmallDevice,
   headerHeight: Platform.OS === 'android' ? APPBAR_HEIGHT : APPBAR_HEIGHT + notchHeight,
-  statusbarHeight: statusBar,
+  statusbarHeight: statusBar+notchHeight,
   orientation: (this.window.width > this.window.height) ? 'LANDSCAPE' : 'PORTRAIT',
   header: header - statusBar,
   appBarHeight: appBarHeight,
