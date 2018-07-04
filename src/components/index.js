@@ -4,13 +4,13 @@ import AppBar from './AppBar';
 import Badge from './Badge';
 import Modal from './Modal';
 import H2Eicon from './H2Eicon';
-import Header, {SearchBox, HeaderTitle, HeaderIcon} from './Header';
+import Header, { SearchBox, HeaderTitle, HeaderIcon } from './Header';
 import Swiper from './ReactNativeSwiper';
 import ListItems from './ListItems';
 import HeaderContent from './HeaderContent';
 // import Button from './Button';
 import TouchableItem from './TouchableItem'; //for drawer
-
+import TextInputIcon,{Icon,Input} from './TextInputIcon';
 
 export {
   AlertModal,
@@ -28,4 +28,7 @@ export {
   // Button,
   TouchableItem,
   H2Eicon,
+  TextInputIcon,
+  Icon,
+  Input
 }

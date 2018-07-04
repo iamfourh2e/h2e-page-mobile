@@ -4,6 +4,8 @@ import android.app.Application;
 
 import com.facebook.CallbackManager;
 import com.facebook.react.ReactApplication;
+import com.cmcewen.blurview.BlurViewPackage;
+import com.cmcewen.blurview.BlurViewPackage;
 import com.reactnative.ivpusic.imagepicker.PickerPackage;
 import com.evollu.react.fcm.FIRMessagingPackage;
 import com.toast.RCTToastPackage;
@@ -57,6 +59,8 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
               new MainReactPackage(),
+            new BlurViewPackage(),
+            new BlurViewPackage(),
             new PickerPackage(),
             new FIRMessagingPackage(),
               new RCTToastPackage(),

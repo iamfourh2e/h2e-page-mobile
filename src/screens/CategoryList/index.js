@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import {
     View,
     ScrollView,
-    TouchableOpacity
+    TouchableOpacity,
+    Image,
+    Text
 } from 'react-native';
 import { I18n } from '../../configs';
 import { Toast } from '../../libs';
