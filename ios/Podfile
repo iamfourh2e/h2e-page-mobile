@@ -33,6 +33,8 @@ pod 'Firebase/Auth'
 
   pod 'RNImageCropPicker', :path => '../node_modules/react-native-image-crop-picker'
 
+  pod 'react-native-blur', :path => '../node_modules/react-native-blur'
+
   target 'pageTests' do
     inherit! :search_paths
     # Pods for testing

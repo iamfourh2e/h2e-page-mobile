@@ -10,17 +10,17 @@ PODS:
   - FirebaseAnalytics (5.0.1):
     - FirebaseCore (~> 5.0)
     - FirebaseInstanceID (~> 3.0)
-    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
     - nanopb (~> 0.3)
   - FirebaseAuth (5.0.1):
     - FirebaseCore (~> 5.0)
     - GTMSessionFetcher/Core (~> 1.1)
   - FirebaseCore (5.0.3):
-    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
   - FirebaseInstanceID (3.1.0):
     - FirebaseCore (~> 5.0)
   - GoogleToolboxForMac/Defines (2.1.4)
-  - GoogleToolboxForMac/NSData+zlib (2.1.4):
+  - "GoogleToolboxForMac/NSData+zlib (2.1.4)":
     - GoogleToolboxForMac/Defines (= 2.1.4)
   - GTMSessionFetcher/Core (1.1.15)
   - nanopb (0.3.8):
@@ -81,13 +81,26 @@ DEPENDENCIES:
   - RNImageCropPicker (from `../node_modules/react-native-image-crop-picker`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga/yoga.podspec`)
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Firebase
+    - FirebaseAnalytics
+    - FirebaseAuth
+    - FirebaseCore
+    - FirebaseInstanceID
+    - GoogleToolboxForMac
+    - GTMSessionFetcher
+    - nanopb
+    - QBImagePickerController
+    - RSKImageCropper
+
 EXTERNAL SOURCES:
   React:
-    :path: ../node_modules/react-native
+    :path: "../node_modules/react-native"
   RNImageCropPicker:
-    :path: ../node_modules/react-native-image-crop-picker
+    :path: "../node_modules/react-native-image-crop-picker"
   yoga:
-    :path: ../node_modules/react-native/ReactCommon/yoga/yoga.podspec
+    :path: "../node_modules/react-native/ReactCommon/yoga/yoga.podspec"
 
 SPEC CHECKSUMS:
   Firebase: 25ed0412036d7d008568d1fb4d2e9d81ea8a0a2c
@@ -106,4 +119,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: df55731f16ab008fcb20d8eeb23e952d7ef34bdb
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.3

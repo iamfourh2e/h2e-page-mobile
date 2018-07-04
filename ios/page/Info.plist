@@ -109,8 +109,8 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-  <key>NSPhotoLibraryUsageDescription</key>
-  <string>Choosing Images</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Choosing Images</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 </dict>

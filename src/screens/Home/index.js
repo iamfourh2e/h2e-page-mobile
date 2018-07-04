@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   TouchableOpacity,
   Text,
@@ -10,23 +10,25 @@ import {
   Platform
 } from 'react-native';
 import AsyncImageAnimated from 'react-native-async-image-animated';
-import {I18n} from '../../configs';
-import {Toast} from '../../libs';
+import { I18n } from '../../configs';
+import { Toast } from '../../libs';
 import {
   Header,
   HeaderIcon,
   SearchBox,
   Swiper,
   ListItems,
-  HeaderContent
+  HeaderContent,
+  TextInputIcon,
+  Icon,
+  Input
 } from '@components';
-import {scale, verticalScale, moderateScale} from '../../libs/scaling';
+import { scale, verticalScale, moderateScale } from '../../libs/scaling';
 
-import {Colors, Layout, Images} from "../../constants";
-import Feather from 'react-native-vector-icons/Feather';
+import { Colors, Layout, Images } from "../../constants";
 
 // styles
-import {styles} from './styles';
+import { styles } from './styles';
 
 const Props = {};
 
@@ -155,7 +157,7 @@ export default class Home extends Component<Props> {
         <View key={k}>
           <Image
             style={styles.slideImage}
-            source={{uri: data.image}}
+            source={{ uri: data.image }}
           />
         </View>
       )
@@ -163,13 +165,13 @@ export default class Home extends Component<Props> {
   }
 
   renderCategoryItems() {
-    const {navigation} = this.props;
+    const { navigation } = this.props;
     return categoryItems.map((data, k) => {
       return (
         <View key={k}>
           <TouchableOpacity
             style={styles.categoryItemsDetail}
-            onPress={() => navigation.navigate({routeName: "CategoryList", key: "CategoryList", params: data.title})}
+            onPress={() => navigation.navigate({ routeName: "CategoryList", key: "CategoryList", params: data.title })}
           >
             {/*<Image source={data.image} style={styles.categoryImage} />*/}
             <AsyncImageAnimated
@@ -188,8 +190,8 @@ export default class Home extends Component<Props> {
   }
 
   render() {
-    const {navigation} = this.props;
-    const backgroundColor = Colors.success;
+    const { navigation } = this.props;
+    const backgroundColor = Colors.white(1);
     const color = Colors.black(1);
     const appTitle = I18n.t('appTitle');
     const search = I18n.t('search');
@@ -205,19 +207,10 @@ export default class Home extends Component<Props> {
         backgroundColor: Colors.white(1)
       }}>
         <Header headerBackground={backgroundColor}>
-          <SearchBox
-            placeholder={search}
-            color={color}
-            iconColor={Colors.success}
-          >
-            <HeaderIcon style={{alignItems: 'center'}}>
-              <TouchableOpacity
-                onPress={() => navigation.navigate({routeName: "DrawerToggle", key: "DrawerToggle"})}
-              >
-                <Feather name='menu' color={Colors.success} size={scale(25)}/>
-              </TouchableOpacity>
-            </HeaderIcon>
-          </SearchBox>
+          <TextInputIcon icon={true}>
+            <Icon name='search' />
+            <Input placeholder={search}/>
+          </TextInputIcon>
         </Header>
 
         <View style={styles.content}>
@@ -243,7 +236,7 @@ export default class Home extends Component<Props> {
                 <ScrollView
                   horizontal={true}
                   showsHorizontalScrollIndicator={false}
-                  contentContainerStyle={{flexGrow: 1}}
+                  contentContainerStyle={{ flexGrow: 1 }}
                 >
                   {this.renderCategoryItems()}
                 </ScrollView>

@@ -64,7 +64,7 @@ export default class Header extends React.Component {
                 }}>
                 </View>
                 <StatusBar
-                    barStyle={"light-content"}
+                    barStyle={"dark-content"}
                     showHideTransition={'fade'}
                     translucent={true}
                     backgroundColor="rgba(0, 0, 0, 0.3)"
