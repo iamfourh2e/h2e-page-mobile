@@ -16,9 +16,9 @@ export const styles = StyleSheet.create({
     },
     contentWrapper: {
         // height: contentCategoryHeight,
-        flex: 1,
+        // flex: 1,
         paddingRight: padding,
-        paddingLeft: padding
+        paddingLeft: padding,
     },
     contentSlide: {
         height: verticalScale(180),
@@ -32,7 +32,7 @@ export const styles = StyleSheet.create({
         height: verticalScale(180),
         width: width,
         // alignSelf: 'stretch',
-        resizeMode:'cover'
+        resizeMode: 'cover'
     },
     contentHeader: {
         height: categoryHeaderHeight,
