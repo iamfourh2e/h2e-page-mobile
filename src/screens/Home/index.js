@@ -23,7 +23,9 @@ import {
   Icon,
   Input
 } from '@components';
+import SnapCarousel from '../../components/SnapCarousel';
 import { scale, verticalScale, moderateScale } from '../../libs/scaling';
+import { wp } from '../../libs/wp';
 
 import { Colors, Layout, Images } from "../../constants";
 
@@ -37,22 +39,26 @@ const restaurant = I18n.t('restaurant');
 const hotel = I18n.t('hotel');
 const shop = I18n.t('shop');
 
-const datas = [
+const data = [
   {
-    image: 'https://tastefinefood.com.au/wp-content/uploads/2015/02/cropped-Cup-o-Noodles-italian-food-1920x1080-e1438669573394.jpg'
-  }, {
-    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGHxKkoeWUUEGh9vOkJa5Do2MWEu9mIuNOJlEPzANDzTjaPb1KYQ'
-  }, {
-    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVxdHsRUItZWoDzQYg5lCpU9h_M6Sfd2H6sxRVTNdMdeSKzzjr5A'
-  }, {
-    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeP-2FKxplPaoSViEnGWfauD2PGJWVo0ErYcK5S2wEV_yd2yKF4A'
-  }
-  , {
-    image: 'https://disneynerd.files.wordpress.com/2018/01/movies-2017.jpg?w=1920&h=621&crop=1'
-  }, {
-    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIZUqHZM8ZeTpqgousO9qSPOfIm1jI3loJ_EBvq7bUAlKC9t-acQ'
-  }, {
-    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRugt4jP46d2ZL_SrLAn7l5iDSD_KNhPJP6AXIFYiN78SSycWY1LQ'
+    title: 'White Pocket Sunset',
+    subtitle: 'Lorem ipsum dolor sit amet et nuncat ',
+    illustration: 'https://i.imgur.com/MABUbpDl.jpg'
+  },
+  {
+    title: 'Acrocorinth, Greece',
+    subtitle: 'Lorem ipsum dolor sit amet et nuncat mergitur',
+    illustration: 'https://i.imgur.com/KZsmUi2l.jpg'
+  },
+  {
+    title: 'The lone tree, majestic landscape of New Zealand',
+    subtitle: 'Lorem ipsum dolor sit amet',
+    illustration: 'https://i.imgur.com/2nCt3Sbl.jpg'
+  },
+  {
+    title: 'Middle Earth, Germany',
+    subtitle: 'Lorem ipsum dolor sit amet',
+    illustration: 'https://i.imgur.com/lceHsT6l.jpg'
   }
 ];
 
@@ -173,15 +179,14 @@ export default class Home extends Component<Props> {
             style={styles.categoryItemsDetail}
             onPress={() => navigation.navigate({ routeName: "CategoryList", key: "CategoryList", params: data.title })}
           >
-            {/*<Image source={data.image} style={styles.categoryImage} />*/}
-            <AsyncImageAnimated
+            <Image source={data.image} style={styles.categoryImage} />
+            {/* <AsyncImageAnimated
               source={{
                 uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQBUAwVajM4oUe4qipZ5UCs2oxLAvOQbWGGQrhHYCDtXT8RutQaw'
               }}
               placeholderColor={'#cfd8dc'}
               style={styles.categoryImage}
-            />
-
+            /> */}
             <Text style={styles.categoryTitle}>{data.title}</Text>
           </TouchableOpacity>
         </View>
@@ -201,29 +206,33 @@ export default class Home extends Component<Props> {
     const recommend = I18n.t('recommend');
     const width = this.getWidth();
 
+    const slideWidth = wp(95);
+    const itemHorizontalMargin = wp(2);
+
+    // export const sliderWidth = viewportWidth;
+    const customItemWidth = slideWidth + itemHorizontalMargin * 2;
+
     return (
       <View style={{
         flex: 1,
         backgroundColor: Colors.white(1)
       }}>
         <Header headerBackground={backgroundColor}>
-          <TextInputIcon icon={true}>
+          <TextInputIcon icon={true} backgroundColor='#ecf0f1'>
             <Icon name='search' />
-            <Input placeholder={search}/>
+            <Input placeholder={search} />
           </TextInputIcon>
         </Header>
 
         <View style={styles.content}>
           <ScrollView showsVerticalScrollIndicator={false}>
-            {/* slider */}
-            <View style={styles.contentSlide}>
-              <Swiper
-                showsButtons={false}
+
+            {/* SnapCarousel */}
+            <View style={styles.contentWrapper}>
+              <SnapCarousel
+                data={data}
                 autoplay={true}
-                style={styles.swiperWrap}
-              >
-                {this.renderSlide()}
-              </Swiper>
+              />
             </View>
 
             {/* category */}
@@ -232,6 +241,10 @@ export default class Home extends Component<Props> {
                 title={category}
               />
               {/* category items */}
+              {/* <SnapCarousel
+                data={data}
+                customItemWidth={customItemWidth}
+              /> */}
               <View style={styles.categoryItems}>
                 <ScrollView
                   horizontal={true}
@@ -241,6 +254,7 @@ export default class Home extends Component<Props> {
                   {this.renderCategoryItems()}
                 </ScrollView>
               </View>
+
             </View>
 
             {/* popular items */}

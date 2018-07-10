@@ -51,7 +51,7 @@ export class Input extends React.Component {
                 underlineColorAndroid='transparent'
                 style={{
                     flex: 1,
-                    fontSize: scale(18),
+                    fontSize: scale(15),
                     paddingBottom: Platform.OS == 'ios' ? 0 : scale(6)
                 }}
             />

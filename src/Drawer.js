@@ -192,7 +192,7 @@ const ExtraDrawerItem = (props) => {
 /*Drawer Navigator*/
 const configRoutes = {
   Root: {
-    screen: Screen.Home,
+    screen: TabNav,
     navigationOptions: {
       drawerLabel: () => I18n.t('home'),
       drawerIcon: ({tintColor}) => (
