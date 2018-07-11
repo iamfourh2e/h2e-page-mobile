@@ -91,6 +91,27 @@ const hotelItems = [
 ]
 
 export default class CategoryList extends Component {
+    _renderList = (items, type) => {
+        const { navigation } = this.props;
+        return items.map((data, k) => {
+            return (
+                <ListItems key={k}
+                    onPress={() => {
+                        navigation.navigate({
+                            routeName: "Cinema_Home",
+                            key: "Cinema_Home",
+                            params: { data, type }
+                        })
+                    }
+                    }
+                    logo={data.logo}
+                    companyName={data.companyName}
+                    description={data.description}
+                    rateValue={data.rateValue}
+                />
+            )
+        })
+    }
     render() {
         const { navigation } = this.props;
         const backgroundColor = Colors.success;
@@ -113,14 +134,10 @@ export default class CategoryList extends Component {
                     <View style={styles.contentWrapper}>
                         {(() => {
                             switch (headerTitle) {
-                                case 'Cinema':
-                                    return <ListItems data={cinemaItems} />;
-                                case 'Restaurant':
-                                    return <ListItems data={restaurantItems} />;
-                                case 'Hotel':
-                                    return <ListItems data={hotelItems} />;
-                                case 'Hotel':
-                                    return null;
+                                case 'Cinema': return this._renderList(cinemaItems, 'Cinema')
+                                case 'Restaurant': return this._renderList(restaurantItems, 'Restaurant');
+                                case 'Hotel': return this._renderList(hotelItems, 'Hotel');
+                                case 'Hotel': return null;
                             }
                         })()}
                     </View>
@@ -129,4 +146,3 @@ export default class CategoryList extends Component {
         );
     }
 }
-

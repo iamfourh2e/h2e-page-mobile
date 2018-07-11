@@ -258,7 +258,7 @@ export default class Home extends Component<Props> {
             </View>
 
             {/* popular items */}
-            <View style={styles.contentWrapper}>
+            {/* <View style={styles.contentWrapper}>
               <HeaderContent
                 title={popular}
                 more={more}
@@ -267,10 +267,10 @@ export default class Home extends Component<Props> {
                 data={popularItems}
                 scrollHorizontal={true}
               />
-            </View>
+            </View> */}
 
             {/* recommend for you */}
-            <View style={styles.contentWrapper}>
+            {/* <View style={styles.contentWrapper}>
               <HeaderContent
                 title={recommend}
                 more={more}
@@ -279,17 +279,17 @@ export default class Home extends Component<Props> {
                 data={recommendItems}
                 scrollHorizontal={true}
               />
-            </View>
+            </View> */}
 
             {/* more */}
-            <View style={styles.contentWrapper}>
+            {/* <View style={styles.contentWrapper}>
               <HeaderContent
                 title={more}
               />
               <ListItems
                 data={recommendItems}
               />
-            </View>
+            </View> */}
 
           </ScrollView>
         </View>

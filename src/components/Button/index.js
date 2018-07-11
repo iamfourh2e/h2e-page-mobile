@@ -1,11 +1,11 @@
 import React from "react";
-import {TouchableOpacity, View, Text} from "react-native";
+import { TouchableOpacity, View, Text } from "react-native";
 import PropTypes from "prop-types";
 //constant
-import {Colors, Fonts, Layout} from "../../constants";
+import { Colors, Fonts, Layout } from "../../constants";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Feather from 'react-native-vector-icons/Feather';
-import {WBIcon} from '../WBIcon';
+import WBIcon from '../../components/H2Eicon';
 
 /**
  * Set Icon component
@@ -24,27 +24,29 @@ export class Button extends React.Component {
   };
 
   componentWillMount() {
-    this.setState({iconName: this.props.iconName, component: IconComponent[this.props.iconComponent]})
+    this.setState({ iconName: this.props.iconName, component: IconComponent[this.props.iconComponent] })
   }
 
   render() {
     const {
-      background, height,
+      background, height, width,
       outline, rounded, roundedSquare,
       iconLeft, iconRight, iconComponent, iconName, iconSize,
-      title, color, fontSize, onPress, onLongPress, disabled
+      title, color, fontSize, onPress, onLongPress, disabled,
+      style
     } = this.props;
     let outlineColor = color || background;
     return (
-      <View style={{flex: 1}}>
+      <View style={{ flex: 1 }}>
         <TouchableOpacity
           activeOpacity={!!onPress ? 0.2 : 1}
           disabled={disabled}
           onPress={() => !!onPress ? onPress() : null}
           onLongPress={() => !!onLongPress ? onLongPress() : null}
-          style={{
+          style={[style, {
             backgroundColor: outline ? "rgba(255, 255, 255,0)" : disabled ? Colors.cloud : background,
             height: height ? height : 44,
+            width: width ? width : null,
             justifyContent: "center",
             alignItems: "center",
             paddingRight: 20,
@@ -52,12 +54,12 @@ export class Button extends React.Component {
             flexDirection: 'row',
             borderWidth: 1,
             borderColor: outline ? background : 'rgba(255,255,255,0)',
-            borderRadius: rounded ? 50 : roundedSquare ? 8 : 0
-          }}>
+            borderRadius: rounded ? 50 : roundedSquare ? 8 : 0,
+          }]}>
           {
             iconLeft ?
               <this.state.component name={this.state.iconName} color={outline ? outlineColor : color}
-                                    size={iconSize ? iconSize : 25} style={{marginRight: 5}}/>
+                size={iconSize ? iconSize : 25} style={{ marginRight: 5 }} />
               :
               null
           }
@@ -71,7 +73,7 @@ export class Button extends React.Component {
           {
             iconRight ?
               <this.state.component name={this.state.iconName} color={outline ? outlineColor : color}
-                                    size={iconSize ? iconSize : 25} style={{marginRight: 5}}/>
+                size={iconSize ? iconSize : 25} style={{ marginRight: 5 }} />
               :
               null
           }
@@ -89,7 +91,7 @@ export class IconButton extends React.Component {
   };
 
   componentWillMount() {
-    this.setState({iconName: this.props.iconName, component: IconComponent[this.props.iconComponent]})
+    this.setState({ iconName: this.props.iconName, component: IconComponent[this.props.iconComponent] })
   }
 
   render() {
@@ -99,7 +101,8 @@ export class IconButton extends React.Component {
       iconComponent, iconName, iconSize,
       disabled,
       color,
-      onPress
+      onPress,
+      style
     } = this.props;
     let outlineColor = color || background;
 
@@ -115,12 +118,12 @@ export class IconButton extends React.Component {
       }
     }
     return (
-      <View style={{alignItems: 'center'}}>
+      <View style={{ alignItems: 'center', flex: 1 }}>
         <TouchableOpacity
           disabled={disabled}
           activeOpacity={!!onPress ? 0.2 : 1}
           onPress={() => !!onPress ? onPress() : null}
-          style={{
+          style={[style, {
             backgroundColor: outline ? "rgba(255, 255, 255,0)" : disabled ? Colors.cloud : background,
             height: size ? size : 44,
             width: size ? size : 44,
@@ -130,7 +133,7 @@ export class IconButton extends React.Component {
             borderWidth: 1,
             borderColor: outline ? background : 'rgba(255,255,255,0)',
             borderRadius: radiusSize
-          }}>
+          }]}>
           <this.state.component
             name={this.state.iconName} color={outline ? outlineColor : color}
             size={iconSize ? iconSize : size ? size / 2 : 25}

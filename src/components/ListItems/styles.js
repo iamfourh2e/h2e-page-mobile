@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
     },
     itemDetail: {
         height: itemDetailHeight,
-        flexDirection: 'row',
+        flexDirection: 'row'
     },
     itemDetailText: {
         flex: 1,
@@ -20,7 +20,7 @@ export const styles = StyleSheet.create({
     itemDetailImage: {
         height: itemDetailHeight,
         width: itemDetailHeight,
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
     logo: {
         height: itemDetailHeight - 20,
