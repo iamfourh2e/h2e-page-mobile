@@ -26,41 +26,87 @@ export default class ListItems extends Component {
             borderBottomWidth: scale(0.25),
             borderBottomColor: Colors.lightGrey
         };
-        return items.map((data, k) => {
-            items.length === k;
-            return (
-                <View key={k}>
-                    <TouchableOpacity style={styles.contentItem}>
-                        <View style={[styles.itemDetail,
-                        items.length - 1 != k ? scrollHorizontal ? borderRight : borderBottom : null
-                        ]}
-                        >
-                            <View style={styles.itemDetailImage}>
-                                <Image
-                                    style={styles.logo}
-                                    source={{ uri: data.logo }}
-                                />
-                            </View>
+
+        // return items.map((data, k) => {
+        //     items.length === k;
+        //     return (
+        //         <View key={k}>
+        //             <TouchableOpacity
+        //                 // onPress={() => !!onPress ? onPress() : null}
+        //                 onPress={() => console.log(data)}
+        //                 style={styles.contentItem}
+        //             >
+        //                 <View style={[styles.itemDetail,
+        //                 items.length - 1 != k ? scrollHorizontal ? borderRight : borderBottom : null
+        //                 ]}
+        //                 >
+        //                     <View style={styles.itemDetailImage}>
+        //                         <Image
+        //                             style={styles.logo}
+        //                             source={{ uri: data.logo }}
+        //                         />
+        //                     </View>
+        //                     <View style={styles.itemDetailText}>
+        //                         <Text style={styles.companyName}>{data.companyName}</Text>
+        //                         <Text style={styles.description}>{data.description}</Text>
+        //                         <View style={styles.rate}>
+        //                             <Text style={styles.rateValue}>{data.rateValue}</Text>
+        //                             <Feather name='star' color={Colors.lightYellow} size={rateIconSize} />
+        //                         </View>
+        //                     </View>
+        //                     {
+        //                         !scrollHorizontal ?
+        //                             <View style={styles.rightIcon}>
+        //                                 <Feather name="chevron-right" color={Colors.lightGrey} size={25} />
+        //                             </View> : null
+        //                     }
+
+        //                 </View>
+        //             </TouchableOpacity>
+        //         </View>
+        //     )
+        // })
+        const { onPress, logo, companyName, description, rateValue } = this.props;
+        return (
+            <View>
+                <TouchableOpacity
+                    onPress={() => !!onPress ? onPress() : null}
+                    style={styles.contentItem}
+                >
+                    <View style={[styles.itemDetail]}
+                    >
+                        <View style={styles.itemDetailImage}>
+                            <Image
+                                style={styles.logo}
+                                source={{ uri: logo }}
+                            />
+                        </View>
+                        <View
+                            style={{
+                                flex: 1,
+                                flexDirection: 'row',
+                                borderBottomColor: Colors.lightGrey,
+                                borderBottomWidth: scale(0.25)
+                            }}>
                             <View style={styles.itemDetailText}>
-                                <Text style={styles.companyName}>{data.companyName}</Text>
-                                <Text style={styles.description}>{data.description}</Text>
+                                <Text style={styles.companyName}>{companyName}</Text>
+                                <Text style={styles.description}>{description}</Text>
                                 <View style={styles.rate}>
-                                    <Text style={styles.rateValue}>{data.rateValue}</Text>
+                                    <Text style={styles.rateValue}>{rateValue}</Text>
                                     <Feather name='star' color={Colors.lightYellow} size={rateIconSize} />
                                 </View>
                             </View>
                             {
-                                !scrollHorizontal ? 
-                                <View style={styles.rightIcon}>
-                                    <Feather name="chevron-right" color={Colors.lightGrey} size={25}/>
-                                </View> : null
+                                !scrollHorizontal ?
+                                    <View style={styles.rightIcon}>
+                                        <Feather name="chevron-right" color={Colors.lightGrey} size={25} />
+                                    </View> : null
                             }
-
                         </View>
-                    </TouchableOpacity>
-                </View>
-            )
-        })
+                    </View>
+                </TouchableOpacity>
+            </View>
+        )
     }
     render() {
         const { data, scrollHorizontal } = this.props;
