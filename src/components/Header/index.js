@@ -54,23 +54,23 @@ export default class Header extends React.Component {
     }
 
     render() {
-        const { headerBackground } = this.props;
+        const { headerBackground, barStyle, style } = this.props;
         return (
             // '#27ae60'
             <View>
                 <View style={{
                     height: Layout.statusbarHeight,
                     backgroundColor: headerBackground ? headerBackground : Colors.white(1)
-                }}>
-                </View>
+                }} />
                 <StatusBar
-                    barStyle={"dark-content"}
+                    barStyle={barStyle ? barStyle : "dark-content"}
                     showHideTransition={'fade'}
                     translucent={true}
                     backgroundColor="rgba(0, 0, 0, 0.3)"
                 />
                 <View style={[
                     styles.header,
+                    style,
                     { backgroundColor: headerBackground ? headerBackground : Colors.white(1) }
                 ]}>
                     {this.props.children}
@@ -83,12 +83,12 @@ export default class Header extends React.Component {
 // HeaderTitle
 export class HeaderTitle extends React.Component {
     render() {
-        const { title } = this.props;
+        const { title, titleColor } = this.props;
         return (
             <View style={styles.headerTitle}>
                 {this.props.children}
                 <View style={styles.title}>
-                    <Text style={[styles.titleText, { color: Colors.white(1) }]}>{title}</Text>
+                    <Text style={[styles.titleText, { color: titleColor ? titleColor : Colors.white(1) }]}>{title}</Text>
                 </View>
             </View>
         )
