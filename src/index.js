@@ -14,8 +14,8 @@ import cinemaRoutes from './modules/cinema'
 const AppStack = StackNavigator(
   {
     Index: Drawer,
-    CategoryList: Screen.CategoryList
-    // ...cinemaRoutes,
+    CategoryList: Screen.CategoryList,
+    ...cinemaRoutes,
   },
   {
     initialRouteName: 'Index',

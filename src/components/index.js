@@ -8,7 +8,7 @@ import Header, { SearchBox, HeaderTitle, HeaderIcon } from './Header';
 import Swiper from './ReactNativeSwiper';
 import ListItems from './ListItems';
 import HeaderContent from './HeaderContent';
-// import Button from './Button';
+import {Button,IconButton} from './Button';
 import TouchableItem from './TouchableItem'; //for drawer
 import TextInputIcon,{Icon,Input} from './TextInputIcon';
 
@@ -25,7 +25,8 @@ export {
   Swiper,
   ListItems,
   HeaderContent,
-  // Button,
+  Button,
+  IconButton,
   TouchableItem,
   H2Eicon,
   TextInputIcon,
