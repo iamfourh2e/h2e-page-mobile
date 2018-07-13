@@ -7,6 +7,12 @@ const logoWrapperHeight = verticalScale(100);
 const profileLogoWrapperHeight = verticalScale(90);
 const profileLogoHeight = verticalScale(60);
 const rateFollowHeight = verticalScale(35);
+
+const HEADER_MAX_HEIGHT = verticalScale(200);
+// const HEADER_MIN_HEIGHT = Platform.OS === 'ios' ? 60 : 73;
+const HEADER_MIN_HEIGHT = verticalScale(65) + Layout.statusbarHeight;
+const HEADER_SCROLL_DISTANCE = HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT;
+
 export const styles = StyleSheet.create({
     content: {
         flex: 1
@@ -30,8 +36,12 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         backgroundColor: Colors.white(1),
         borderRadius: scale(100),
-        marginTop: verticalScale(70),
-        marginBottom: verticalScale(10)
+        marginBottom: verticalScale(10),
+        // position: 'absolute',
+        // top: 0,
+        // left: 0,
+        // right: 0,
+        // zIndex: 10
     },
     profileLogo: {
         width: profileLogoHeight,
@@ -116,5 +126,55 @@ export const styles = StyleSheet.create({
     value: {
         fontSize: scale(20),
         color: Colors.info
-    }
+    },
+
+    // scrollView
+    fill: {
+        flex: 1,
+    },
+    content: {
+        flex: 1,
+    },
+    header: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        backgroundColor: 'rgba(0,0,0,1)',
+        overflow: 'hidden',
+        height: HEADER_MAX_HEIGHT
+    },
+    backgroundImage: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        width: null,
+        height: HEADER_MAX_HEIGHT,
+        resizeMode: 'cover'
+    },
+    bar: {
+        flex: 1,
+        backgroundColor: 'transparent',
+        // height: verticalScale(65),
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0
+    },
+    title: {
+        color: 'white',
+        fontSize: 18,
+    },
+    scrollViewContent: {
+        // iOS uses content inset, which acts like padding.
+        paddingTop: Platform.OS !== 'ios' ? HEADER_MAX_HEIGHT : 0,
+    },
+    row: {
+        height: 40,
+        margin: 16,
+        backgroundColor: '#D3D3D3',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
 });

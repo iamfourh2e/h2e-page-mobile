@@ -91,7 +91,7 @@ const hotelItems = [
 ]
 
 export default class CategoryList extends Component {
-    _renderList = (items, type) => {
+    _renderList = (items) => {
         const { navigation } = this.props;
         return items.map((data, k) => {
             return (
@@ -100,7 +100,7 @@ export default class CategoryList extends Component {
                         navigation.navigate({
                             routeName: "Cinema_Home",
                             key: "Cinema_Home",
-                            params: { data, type }
+                            params: { data }
                         })
                     }
                     }
@@ -121,7 +121,10 @@ export default class CategoryList extends Component {
                 flex: 1,
                 backgroundColor: Colors.white(1)
             }}>
-                <Header headerBackground={backgroundColor}>
+                <Header
+                    headerBackground={backgroundColor}
+                    barStyle='light-content'
+                >
                     <HeaderTitle title={headerTitle}>
                         <HeaderIcon>
                             <TouchableOpacity onPress={() => navigation.goBack(null)}>
@@ -134,9 +137,9 @@ export default class CategoryList extends Component {
                     <View style={styles.contentWrapper}>
                         {(() => {
                             switch (headerTitle) {
-                                case 'Cinema': return this._renderList(cinemaItems, 'Cinema')
-                                case 'Restaurant': return this._renderList(restaurantItems, 'Restaurant');
-                                case 'Hotel': return this._renderList(hotelItems, 'Hotel');
+                                case 'Cinema': return this._renderList(cinemaItems)
+                                case 'Restaurant': return this._renderList(restaurantItems);
+                                case 'Hotel': return this._renderList(hotelItems);
                                 case 'Hotel': return null;
                             }
                         })()}

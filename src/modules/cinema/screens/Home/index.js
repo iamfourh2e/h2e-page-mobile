@@ -8,6 +8,7 @@ import {
     View,
     RefreshControl,
     TouchableOpacity,
+    Image
 } from 'react-native';
 
 import {
@@ -22,11 +23,13 @@ import {
 import { Colors, Layout, Images } from "../../../../constants";
 import Feather from 'react-native-vector-icons/Feather';
 import { scale, verticalScale, moderateScale } from '../../../../libs/scaling';
+import { styles } from './styles';
 
 const HEADER_MAX_HEIGHT = verticalScale(200);
 // const HEADER_MIN_HEIGHT = Platform.OS === 'ios' ? 60 : 73;
-const HEADER_MIN_HEIGHT = verticalScale(65)+Layout.statusbarHeight;
+const HEADER_MIN_HEIGHT = verticalScale(65) + Layout.statusbarHeight;
 const HEADER_SCROLL_DISTANCE = HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT;
+const profileLogoHeight = verticalScale(60);
 
 export default class App extends Component {
     constructor(props) {
@@ -41,10 +44,40 @@ export default class App extends Component {
         };
     }
 
-    _renderScrollViewContent() {
+    _renderScrollViewContent(navigationProp) {
         const data = Array.from({ length: 30 });
+        const scrollY = Animated.add(
+            this.state.scrollY,
+            Platform.OS === 'ios' ? HEADER_MAX_HEIGHT : 0,
+        );
+        const titleScale = scrollY.interpolate({
+            inputRange: [0, HEADER_SCROLL_DISTANCE / 2, HEADER_SCROLL_DISTANCE],
+            outputRange: [1, 1, 0.7],
+            extrapolate: 'clamp',
+        });
+        const animatedZindexProfile = scrollY.interpolate({
+            inputRange: [0, HEADER_SCROLL_DISTANCE / 2, HEADER_SCROLL_DISTANCE],
+            outputRange: [1, 1, -1],
+            extrapolate: 'clamp',
+        });
         return (
             <View style={styles.scrollViewContent}>
+                <View style={styles.profileRow}>
+                    <Animated.View style={[styles.profileLogoWrapper,
+                    {
+                        transform: [{ scale: titleScale }],
+                    }
+                    ]}>
+                        <Animated.Image
+                            source={{ uri: navigationProp.logo }}
+                            style={[styles.profileLogo, {
+                                width: profileLogoHeight,
+                                height: profileLogoHeight,
+                                transform: [{ scale: titleScale }],
+                            }]}
+                        />
+                    </Animated.View>
+                </View>
                 {data.map((_, i) => (
                     <View key={i} style={styles.row}>
                         <Text>{i}</Text>
@@ -72,7 +105,7 @@ export default class App extends Component {
             outputRange: [1, 1, 0.4],
             extrapolate: 'clamp',
         });
-        const { navigation } = this.props;
+
         const imageTranslate = scrollY.interpolate({
             inputRange: [0, HEADER_SCROLL_DISTANCE],
             outputRange: [0, 100],
@@ -89,23 +122,16 @@ export default class App extends Component {
             outputRange: [0, 0, -8],
             extrapolate: 'clamp',
         });
+        const { navigation } = this.props;
         const {
-            data: {
+            data = {
                 logo: logo,
                 companyName: companyName,
                 description: description,
                 rateValue: rateValue
-            },
-            type: headerTitle } = navigation.state.params;
-
+            } } = navigation.state.params;
         return (
             <View style={styles.fill}>
-                
-                <StatusBar
-                    translucent
-                    barStyle="light-content"
-                    backgroundColor="rgba(0, 0, 0, 0.251)"
-                />
                 <Animated.ScrollView
                     style={styles.fill}
                     scrollEventThrottle={1}
@@ -132,7 +158,7 @@ export default class App extends Component {
                         y: -HEADER_MAX_HEIGHT,
                     }}
                 >
-                    {this._renderScrollViewContent()}
+                    {this._renderScrollViewContent(data)}
                 </Animated.ScrollView>
 
                 <Animated.View
@@ -150,100 +176,29 @@ export default class App extends Component {
                                 transform: [{ translateY: imageTranslate }],
                             },
                         ]}
-                        source={{ uri: 'https://images2.persgroep.net/rcs/C94d5YvOXDBmbxTD10MY1u6ZlgA/diocontent/122489084/_fitwidth/694/?appId=21791a8992982cd8da851550a453bd7f&quality=0.9' }}
+                        source={{ uri: 'https://dohalife.com/wp-content/uploads/2016/03/Al-Khor%E2%80%99s-first-cinema-finally-open-to-the-public.jpg' }}
                     />
                 </Animated.View>
 
-                <Animated.View
-                    style={[
-                        styles.bar,
-                        {
-                            transform: [
-                                { scale: titleScale },
-                                { translateY: titleTranslate },
-                            ],
-                        },
-                    ]}
-                >
-                    {/* <Header
+                <Animated.View style={styles.bar}>
+                    <Header
                         headerBackground='transparent'
-                        barStyle="dark-content"
-                        style={{
-                            position: 'absolute',
-                            top: 0,
-                            left: 0,
-                            right: 0,
-                            marginTop: Layout.statusbarHeight,
-                            overflow: 'hidden',
-                        }}
+                        barStyle='light-content'
                     >
-                        <HeaderTitle
-                            title={companyName}
-                            titleColor={Colors.white(1)}
-                        >
+                        <HeaderTitle title={data.companyName}>
                             <HeaderIcon>
                                 <TouchableOpacity onPress={() => navigation.goBack(null)}>
                                     <Feather name='chevron-left' color={Colors.white(1)} size={scale(30)} />
                                 </TouchableOpacity>
                             </HeaderIcon>
                         </HeaderTitle>
-                    </Header> */}
-                    <Text style={styles.title}>Title</Text>
+                    </Header>
                 </Animated.View>
             </View>
         );
     }
 }
 
-const styles = StyleSheet.create({
-    fill: {
-        flex: 1,
-    },
-    content: {
-        flex: 1,
-    },
-    header: {
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        backgroundColor: 'rgba(0,0,0,1)',
-        overflow: 'hidden',
-        height: HEADER_MAX_HEIGHT
-    },
-    backgroundImage: {
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        width: null,
-        height: HEADER_MAX_HEIGHT,
-        resizeMode: 'cover',
-    },
-    bar: {
-        backgroundColor: 'transparent',
-        marginTop: Platform.OS === 'ios' ? 28 : 38,
-        height: 32,
-        alignItems: 'center',
-        justifyContent: 'center',
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-    },
-    title: {
-        color: 'white',
-        fontSize: 18,
-    },
-    scrollViewContent: {
-        // iOS uses content inset, which acts like padding.
-        paddingTop: Platform.OS !== 'ios' ? HEADER_MAX_HEIGHT : 0,
-    },
-    row: {
-        height: 40,
-        margin: 16,
-        backgroundColor: '#D3D3D3',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-});
+// const styles = StyleSheet.create({
+
+// });
