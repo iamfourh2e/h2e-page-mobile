@@ -46,7 +46,7 @@ export default class Home extends React.Component {
             type: headerTitle } = navigation.state.params;
         // companyName: headerTitle, logo: logo
         return (
-            <View style={{ flex: 1, backgroundColor: '#fff'}}>
+            <View style={{ flex: 1, backgroundColor: '#fff' }}>
                 <Header
                     headerBackground={backgroundColor}
                     barStyle="dark-content"
@@ -78,12 +78,13 @@ export default class Home extends React.Component {
                     left: 0,
                     right: 0,
                     paddingTop: 60,
-                    flex:1
+                    flex: 1
                 }}>
                     <View style={styles.coverWrapper}>
                         <Image
                             style={{ height: verticalScale(200) }}
-                            source={{ uri: 'https://images2.persgroep.net/rcs/C94d5YvOXDBmbxTD10MY1u6ZlgA/diocontent/122489084/_fitwidth/694/?appId=21791a8992982cd8da851550a453bd7f&quality=0.9' }} />
+                            source={{ uri: 'https://images2.persgroep.net/rcs/C94d5YvOXDBmbxTD10MY1u6ZlgA/diocontent/122489084/_fitwidth/694/?appId=21791a8992982cd8da851550a453bd7f&quality=0.9' }}
+                        />
                     </View>
                 </ScrollView>
 
