@@ -5,7 +5,7 @@ import { scale, verticalScale, moderateScale } from '../../../../libs/scaling';
 const padding = scale(11);
 const logoWrapperHeight = verticalScale(100);
 const profileLogoWrapperHeight = verticalScale(90);
-const profileLogoHeight = verticalScale(60);
+const profileLogoHeight = verticalScale(100);
 const rateFollowHeight = verticalScale(35);
 
 const HEADER_MAX_HEIGHT = verticalScale(200);
@@ -26,39 +26,43 @@ export const styles = StyleSheet.create({
         zIndex: -1
     },
     profileRow: {
-        flexDirection: 'row'
+        flex: 1,
+        flexDirection: 'row',
+        paddingTop: padding,
+        backgroundColor: Colors.white(1),
+        marginBottom: scale(11)
     },
     profileLogoWrapper: {
-        marginLeft: scale(11),
-        width: profileLogoWrapperHeight,
-        height: profileLogoWrapperHeight,
-        alignItems: 'center',
+        flex: 1,
+        // width: verticalScale(120),
         justifyContent: 'center',
         backgroundColor: Colors.white(1),
-        borderRadius: scale(100),
-        marginBottom: verticalScale(10),
-        // position: 'absolute',
-        // top: 0,
-        // left: 0,
-        // right: 0,
-        // zIndex: 10
+        zIndex: 1,
+        marginLeft: -padding,
+        paddingLeft: padding
     },
     profileLogo: {
         width: profileLogoHeight,
         height: profileLogoHeight,
-        resizeMode: 'contain'
+        resizeMode: 'contain',
     },
     followMessageRateWrapper: {
+        // flex: 2.5,
         flex: 1,
-        height: rateFollowHeight,
-        backgroundColor: Colors.white(1),
-        marginTop: verticalScale(120),
-        flexDirection: 'row'
+        // flexDirection: 'row',
+        // alignItems: 'center',
+        // justifyContent: 'center',
+        // paddingRight: padding,
+        // borderBottomColor: Colors.lightGrey,
+        // borderBottomWidth: scale(.5),
+
     },
     followMessageWrapper: {
-        flex: 1.5,
+        flex: 2,
         height: verticalScale(50),
-        flexDirection: 'row'
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     rateWrapper: {
         flex: 1,
@@ -108,29 +112,54 @@ export const styles = StyleSheet.create({
     },
     postFollowingFollowWrapper: {
         flexDirection: 'row',
-        borderBottomColor: Colors.lightGrey,
-        borderBottomWidth: scale(.5),
-        paddingBottom: Platform.OS == 'ios' ? 0 : scale(10),
-        marginLeft: padding,
-        marginRight: padding
+        // borderBottomColor: Colors.lightGrey,
+        // borderBottomWidth: scale(.5),
+        // paddingBottom: scale(10),
+        // marginLeft: padding,
+        // marginRight: padding,
+        zIndex: -1,
+        backgroundColor: 'grey'
     },
     column: {
         flex: 1,
         height: verticalScale(50),
-        alignItems: 'center'
+        alignItems: 'center',
+        justifyContent: 'center',
+        // backgroundColor: 'green'
     },
     title: {
-        fontSize: scale(12),
+        fontSize: scale(13),
         color: Colors.lightGrey
     },
     value: {
-        fontSize: scale(20),
+        fontSize: scale(18),
         color: Colors.info
+    },
+
+    // time
+    showTimeHeader: {
+        flex: 1,
+        flexDirection: 'row'
+    },
+    showTimeTitle: {
+        flex: 1,
+        justifyContent: 'flex-end',
+    },
+    showTimeTitleCenter: {
+        flex: 1,
+        justifyContent: 'flex-end',
+        alignItems: 'center'
+    },
+    showTimeTitleRight: {
+        flex: 1,
+        justifyContent: 'flex-end',
+        alignItems: 'flex-end'
     },
 
     // scrollView
     fill: {
         flex: 1,
+        backgroundColor: Colors.white(1)
     },
     content: {
         flex: 1,
@@ -162,17 +191,19 @@ export const styles = StyleSheet.create({
         left: 0,
         right: 0
     },
-    title: {
-        color: 'white',
-        fontSize: 18,
-    },
     scrollViewContent: {
+        flex: 1,
+        backgroundColor: Colors.white(1),
         // iOS uses content inset, which acts like padding.
         paddingTop: Platform.OS !== 'ios' ? HEADER_MAX_HEIGHT : 0,
+        paddingLeft: padding,
+        paddingRight: padding,
+        zIndex: 10,
+        paddingBottom: scale(10)
     },
     row: {
         height: 40,
-        margin: 16,
+        marginTop: scale(11),
         backgroundColor: '#D3D3D3',
         alignItems: 'center',
         justifyContent: 'center',
