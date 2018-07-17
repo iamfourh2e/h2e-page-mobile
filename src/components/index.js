@@ -8,9 +8,10 @@ import Header, { SearchBox, HeaderTitle, HeaderIcon } from './Header';
 import Swiper from './ReactNativeSwiper';
 import ListItems from './ListItems';
 import HeaderContent from './HeaderContent';
-import {Button,IconButton} from './Button';
+import { Button, IconButton } from './Button';
 import TouchableItem from './TouchableItem'; //for drawer
-import TextInputIcon,{Icon,Input} from './TextInputIcon';
+import TextInputIcon, { Icon, Input } from './TextInputIcon';
+import SnapCarousel from './SnapCarousel';
 
 export {
   AlertModal,
@@ -31,5 +32,6 @@ export {
   H2Eicon,
   TextInputIcon,
   Icon,
-  Input
+  Input,
+  SnapCarousel
 }
