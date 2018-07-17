@@ -21,9 +21,9 @@ import {
   HeaderContent,
   TextInputIcon,
   Icon,
-  Input
+  Input,SnapCarousel
 } from '@components';
-import SnapCarousel from '../../components/SnapCarousel';
+// import SnapCarousel from '../../components/SnapCarousel';
 import { scale, verticalScale, moderateScale } from '../../libs/scaling';
 import { wp } from '../../libs/wp';
 

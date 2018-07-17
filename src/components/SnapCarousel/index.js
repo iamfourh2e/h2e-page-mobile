@@ -65,7 +65,7 @@ export default class SnapCarousel extends Component {
                     loopClonesPerSide={2}
                     autoplay={true}
                     autoplayDelay={500}
-                    autoplayInterval={3000}
+                    autoplayInterval={1000}
                     onSnapToItem={(index) => this.setState({ slider1ActiveSlide: index })}
                 />
                 <Pagination
