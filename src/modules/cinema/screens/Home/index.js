@@ -20,7 +20,8 @@ import {
     HeaderContent,
     Button,
     IconButton,
-    SnapCarousel
+    SnapCarousel,
+    H2Eicon
 } from '@components';
 import { Colors, Layout, Images } from "../../../../constants";
 import Feather from 'react-native-vector-icons/Feather';
@@ -212,130 +213,8 @@ export default class App extends Component {
                         showingData={showingData}
                         comingData={comingData}
                     />
-
-                    {/* Schedule */}
-                    <View style={{ flex: 1 }}>
-                        <View style={{ flexDirection: 'row', alignItems: 'flex-end' }}>
-                            <Text style={{ fontSize: scale(23), marginRight: scale(5) }}>Day</Text>
-                            <Text style={{ fontSize: scale(15), color: Colors.lightGrey }}>(DD/MM/YYYY)</Text>
-                        </View>
-                        <TouchableOpacity style={{
-                            flex: 1,
-                            flexDirection: 'row',
-                            marginTop: Platform.OS == 'ios' ? scale(40) : scale(20),
-                            zIndex: 10,
-                            paddingTop: Platform.OS == 'ios' ? 0 : scale(20)
-                        }}>
-
-                            {/* image */}
-                            <View style={{
-                                width: verticalScale(100),
-                                height: verticalScale(110),
-                                // marginTop: -scale(25),
-                                zIndex: 10,
-                                position: 'absolute',
-                                borderRadius: scale(10),
-                                alignItems: 'flex-start',
-                                marginTop: Platform.OS == 'ios' ? -scale(25) : scale(0)
-                            }}>
-                                <Image
-                                    style={{
-                                        width: verticalScale(100),
-                                        height: verticalScale(110),
-                                        borderRadius: scale(10)
-                                    }}
-                                    source={{ uri: 'https://cdn.cinematerial.com/p/297x/mabrnnrl/annihilation-british-movie-poster-md.jpg' }}
-                                />
-                            </View>
-
-                            <Text style={{
-                                zIndex: 10,
-                                marginTop: Platform.OS == 'ios' ? -scale(25) : scale(-5),
-                                marginLeft: scale(100),
-                                position: 'absolute',
-                                fontSize: scale(18),
-                                color: Colors.info,
-                            }}>Title</Text>
-
-                            {/* detail */}
-                            <View style={{
-                                flex: 1,
-                                marginRight: scale(20),
-                                marginLeft: scale(20),
-                                // height: verticalScale(110),
-                                backgroundColor: Platform.OS == 'ios' ? Colors.white(1) : '#F7F7F7',
-                                zIndex: -10,
-                                top: 0,
-                                bottom: 18,
-                                shadowColor: Colors.black(1),
-                                shadowOpacity: 0.25,
-                                shadowOffset: { width: 0, height: 10 },
-                                shadowRadius: 12,
-                                borderRadius: 12,
-                                padding: scale(10),
-                            }}>
-                                <View style={{
-                                    height: verticalScale(20),
-                                    paddingRight: scale(10),
-                                }}>
-                                    <Text style={{
-                                        zIndex: 10,
-                                        marginLeft: scale(70),
-                                        fontSize: scale(14),
-                                        color: Colors.danger
-                                    }}>Time</Text>
-                                </View>
-                                <View style={{
-                                    height: verticalScale(20),
-                                    paddingRight: scale(10)
-                                }}>
-                                    <Text style={{
-                                        zIndex: 10,
-                                        marginLeft: scale(70),
-                                        fontSize: scale(14),
-                                        color: Colors.info
-                                    }}>Duration</Text>
-                                </View>
-                                <View style={{
-                                    height: verticalScale(20),
-                                    paddingRight: scale(10)
-                                }}>
-                                    <Text style={{
-                                        zIndex: 10,
-                                        marginLeft: scale(70),
-                                        fontSize: scale(14),
-                                        color: Colors.lightGrey
-                                    }}>Type</Text>
-                                </View>
-                                <View style={{
-                                    height: verticalScale(20),
-                                    paddingRight: scale(10)
-                                }}>
-                                    <Text style={{
-                                        zIndex: 10,
-                                        marginLeft: scale(70),
-                                        fontSize: scale(16),
-                                        color: Colors.success
-                                    }}>available</Text>
-                                </View>
-                            </View>
-                            <TouchableOpacity style={{
-                                width: verticalScale(60),
-                                height: verticalScale(40),
-                                backgroundColor: Colors.info,
-                                marginTop: -scale(25),
-                                zIndex: 10,
-                                position: 'absolute',
-                                right: 0,
-                                bottom: 0,
-                                marginBottom: scale(15),
-                                borderRadius: scale(10)
-                            }}>
-                            </TouchableOpacity>
-                        </TouchableOpacity>
-                    </View>
+                    <MovieSchedule />
                 </View>
-
             </View >
         );
     }
@@ -453,6 +332,7 @@ export default class App extends Component {
     }
 }
 
+// ShowTime
 export class ShowTime extends React.Component {
     constructor(props) {
         super(props);
@@ -525,6 +405,206 @@ export class ShowTime extends React.Component {
     }
 }
 
-// const styles = StyleSheet.create({
+export class MovieSchedule extends React.Component {
+    render() {
+        const data = [
+            {
+                day: 'Wednesday',
+                date: '18/07/2018',
+                schedule: [
+                    {
+                        movieTitle: 'HOTEL TRANSYLVANIA 3 HOTEL TRANSYLVANIA 3',
+                        movieTime: '09:30 AM',
+                        movieDuration: '1h 38mn',
+                        movieType: 'Animation, Comedy,Animation, Comedy',
+                        availableSeat: 50,
+                        image: 'https://www.cinecolombia.com/sites/default/files/hoteltransilvania.jpg'
+                    },
+                    {
+                        movieTitle: 'HOTEL TRANSYLVANIA 3',
+                        movieTime: '11:30 AM',
+                        movieDuration: '1h 38mn',
+                        movieType: 'Animation, Comedy',
+                        availableSeat: 50,
+                        image: 'https://www.cinecolombia.com/sites/default/files/hoteltransilvania.jpg'
+                    },
+                    {
+                        movieTitle: 'អ្នកចម្បាំងញិកញ៉ក់',
+                        movieTime: '02:00 AM',
+                        movieDuration: '2h 08mn',
+                        movieType: 'Action, Comedy',
+                        availableSeat: 50,
+                        image: 'https://scontent-hkg3-1.xx.fbcdn.net/v/t1.0-9/36660706_1022516091256592_7917065752480317440_n.jpg?_nc_cat=0&oh=b1a259f95aa456d669bf8249a9f80987&oe=5BC5E230'
+                    },
+                    {
+                        movieTitle: 'SKYSCRAPER',
+                        movieTime: '04:30 PM',
+                        movieDuration: '1h 43mn',
+                        movieType: 'Action',
+                        availableSeat: 100,
+                        image: 'https://resizing.flixster.com/Cu7a8TJbwBCy3b8A0Fzs-xWFKog=/300x300/v1.bTsxMjcyMTE2ODtqOzE3Nzg3OzEyMDA7NDgwOzc2MA'
+                    },
+                    {
+                        movieTitle: 'SKYSCRAPER',
+                        movieTime: '07:00 PM',
+                        movieDuration: '1h 43mn',
+                        movieType: 'Action',
+                        availableSeat: 100,
+                        image: 'https://resizing.flixster.com/Cu7a8TJbwBCy3b8A0Fzs-xWFKog=/300x300/v1.bTsxMjcyMTE2ODtqOzE3Nzg3OzEyMDA7NDgwOzc2MA'
+                    },
+                ]
+            },
+            {
+                day: 'Thursday',
+                date: '19/07/2018',
+                schedule: [
+                    {
+                        movieTitle: 'HOTEL TRANSYLVANIA 3',
+                        movieTime: '09:30 AM',
+                        movieDuration: '1h 38mn',
+                        movieType: 'Animation, Comedy',
+                        availableSeat: 50,
+                        image: 'https://www.cinecolombia.com/sites/default/files/hoteltransilvania.jpg'
+                    },
+                    {
+                        movieTitle: 'អ្នកចម្បាំងញិកញ៉ក់',
+                        movieTime: '11:30 AM',
+                        movieDuration: '2h 08mn',
+                        movieType: 'Action, Comedy',
+                        availableSeat: 50,
+                        image: 'https://scontent-hkg3-1.xx.fbcdn.net/v/t1.0-9/36660706_1022516091256592_7917065752480317440_n.jpg?_nc_cat=0&oh=b1a259f95aa456d669bf8249a9f80987&oe=5BC5E230'
+                    },
+                    {
+                        movieTitle: 'HOTEL TRANSYLVANIA 3',
+                        movieTime: '02:00 AM',
+                        movieDuration: '1h 38mn',
+                        movieType: 'Animation, Comedy',
+                        availableSeat: 50,
+                        image: 'https://www.cinecolombia.com/sites/default/files/hoteltransilvania.jpg'
+                    },
+                    {
+                        movieTitle: 'SKYSCRAPER',
+                        movieTime: '04:30 PM',
+                        movieDuration: '1h 43mn',
+                        movieType: 'Action',
+                        availableSeat: 100,
+                        image: 'https://resizing.flixster.com/Cu7a8TJbwBCy3b8A0Fzs-xWFKog=/300x300/v1.bTsxMjcyMTE2ODtqOzE3Nzg3OzEyMDA7NDgwOzc2MA'
+                    },
+                    {
+                        movieTitle: 'SKYSCRAPER',
+                        movieTime: '07:00 PM',
+                        movieDuration: '1h 43mn',
+                        movieType: 'Action',
+                        availableSeat: 100,
+                        image: 'https://resizing.flixster.com/Cu7a8TJbwBCy3b8A0Fzs-xWFKog=/300x300/v1.bTsxMjcyMTE2ODtqOzE3Nzg3OzEyMDA7NDgwOzc2MA'
+                    },
+                ]
+            },
+        ]
+        return (
+            <View style={styles.scheduleWrapper}>
+                {data.map((o, k) => {
+                    return (
+                        <View key={k}>
+                            <View style={styles.scheduleHeader}>
+                                <Text style={styles.scheduleHeaderTitle}>{o.day}</Text>
+                                <Text style={styles.scheduleHeaderSubTitle}>{o.date}</Text>
+                            </View>
+                            {o.schedule.map((data, key) => {
+                                return (
+                                    <SecheduleList
+                                        key={key}
+                                        movieTitle={data.movieTitle}
+                                        movieTime={data.movieTime}
+                                        movieDuration={data.movieDuration}
+                                        movieType={data.movieType}
+                                        availableSeat={data.availableSeat}
+                                        movieImage={data.image}
+                                    />
+                                );
+                            })}
+                        </View>
+                    );
+                })}
 
-// });
+            </View>
+        );
+    }
+}
+
+// ScheduleList
+export class SecheduleList extends React.Component {
+    constructor(props) {
+        super(props);
+        this.animatedScaleBtn = new Animated.Value(1);
+        this.handlePressIn = this.handlePressIn.bind(this);
+        this.handlePressOut = this.handlePressOut.bind(this);
+    }
+    handlePressIn() {
+        Animated.spring(this.animatedScaleBtn, {
+            toValue: .9
+        }).start();
+    }
+    handlePressOut() {
+        Animated.spring(this.animatedScaleBtn, {
+            toValue: 1,
+            friction: 3,
+            tension: 40
+        }).start();
+        // setTimeout(() => {
+        //     this._signInAsync();
+        // }, 1000);
+    }
+    render() {
+        const animatedStyle = {
+            scaleLoginBtn: {
+                transform: [
+                    { scale: this.animatedScaleBtn }
+                ]
+            }
+        }
+        const { movieTitle, movieTime, movieDuration, movieType, availableSeat, movieImage } = this.props;
+        return (
+            <TouchableWithoutFeedback
+                onPressIn={this.handlePressIn}
+                onPressOut={this.handlePressOut}
+            >
+                <Animated.View style={[styles.scheduleRowList, animatedStyle.scaleLoginBtn]}>
+
+                    {/* image */}
+                    <View style={styles.scheduleImageWrapper}>
+                        <Image
+                            style={styles.scheduleImage}
+                            source={{ uri: movieImage }}
+                        />
+                    </View>
+
+                    {/* Movie Title */}
+                    <View style={styles.scheduleMovieTitleWrapper}>
+                        <Text
+                            numberOfLines={1}
+                            style={styles.scheduleMovieTitle}
+                        >
+                            {movieTitle}
+                        </Text>
+                    </View>
+                    {/* detail */}
+                    <View style={styles.scheduleMovieDetailWrapper}>
+                        <Text numberOfLines={1} style={[styles.scheduleMovieTextDetail, styles.movieTime]}>{movieTime}</Text>
+                        <Text numberOfLines={1} style={[styles.scheduleMovieTextDetail, styles.movieDuration]}>Duration : {movieDuration}</Text>
+                        <View style={{ flex: 1, width: '90%' }}>
+                            <Text numberOfLines={1} style={[styles.scheduleMovieTextDetail, styles.movieType]}>{movieType}</Text>
+                        </View>
+                        <View style={styles.availableSeatWrapper}>
+                            <H2Eicon name='seat' size={scale(20)} color={Colors.success} />
+                            <Text numberOfLines={1} style={[styles.scheduleMovieTextDetail, styles.availableSeat]}>{availableSeat}</Text>
+                        </View>
+                    </View>
+                    <TouchableOpacity style={styles.bookTicket}>
+                        <H2Eicon name='book-ticket-outline' size={scale(35)} />
+                    </TouchableOpacity>
+                </Animated.View>
+            </TouchableWithoutFeedback>
+        );
+    }
+}

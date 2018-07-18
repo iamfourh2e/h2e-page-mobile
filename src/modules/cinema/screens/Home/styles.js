@@ -208,4 +208,111 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+
+    // Schedule
+    scheduleWrapper: {
+        flex: 1
+    },
+    scheduleHeader: {
+        flexDirection: 'row',
+        alignItems: 'flex-end',
+        marginTop: scale(20)
+    },
+    scheduleHeaderTitle: {
+        fontSize: scale(23),
+        marginRight: scale(5),
+        color: Colors.black(1)
+    },
+    scheduleHeaderSubTitle: {
+        fontSize: scale(15),
+        color: Colors.lightGrey
+    },
+    scheduleRowList: {
+        flex: 1,
+        flexDirection: 'row',
+        marginTop: Platform.OS == 'ios' ? scale(40) : scale(20),
+        zIndex: 10,
+        paddingTop: Platform.OS == 'ios' ? 0 : scale(20)
+    },
+    scheduleImageWrapper: {
+        width: verticalScale(100),
+        height: verticalScale(120),
+        zIndex: 10,
+        position: 'absolute',
+        borderRadius: scale(10),
+        alignItems: 'flex-start',
+        marginTop: Platform.OS == 'ios' ? -scale(25) : scale(0)
+    },
+    scheduleImage: {
+        width: verticalScale(100),
+        height: verticalScale(120),
+        borderRadius: scale(10)
+    },
+    scheduleMovieTitleWrapper: {
+        flex: 1,
+        width: Platform.OS == 'ios' ? '95%' : '90%',
+        position: 'absolute',
+        top: 0,
+        marginTop: Platform.OS == 'ios' ? -scale(20) : 0,
+        marginBottom: scale(25),
+        justifyContent: 'center',
+    },
+    scheduleMovieTitle: {
+        marginLeft: Platform.OS == 'ios' ? scale(110) : scale(100),
+        fontSize: scale(18),
+        color: Colors.info,
+        fontFamily: Fonts.khpreyveng
+    },
+    scheduleMovieDetailWrapper: {
+        flex: 1,
+        marginRight: scale(20),
+        marginLeft: scale(20),
+        backgroundColor: Platform.OS == 'ios' ? Colors.white(1) : '#2d3436',
+        zIndex: -10,
+        top: 0,
+        marginTop: Platform.OS == 'ios' ? scale(20) : scale(15),
+        bottom: scale(20),
+        shadowColor: Colors.black(1),
+        shadowOpacity: 0.25,
+        shadowOffset: { width: 0, height: 10 },
+        shadowRadius: 12,
+        borderRadius: 12,
+        padding: scale(10),
+    },
+    scheduleMovieTextDetail: {
+        marginLeft: Platform.OS == 'ios' ? scale(80) : scale(70),
+        marginTop: scale(3),
+        fontSize: scale(14)
+    },
+    movieTime: {
+        color: Platform.OS == 'ios' ? Colors.danger : Colors.white(1)
+    },
+    movieDuration: {
+        color: Platform.OS == 'ios' ? Colors.niceBlue : Colors.white(1)
+    },
+    movieType: {
+        color: Colors.lightGrey
+    },
+    availableSeatWrapper: {
+        flexDirection: 'row',
+        marginLeft: Platform.OS == 'ios' ? scale(80) : scale(70),
+    },
+    availableSeat: {
+        color: Colors.success,
+        marginLeft: 0
+    },
+    bookTicket: {
+        width: verticalScale(60),
+        height: verticalScale(40),
+        backgroundColor: Colors.info,
+        // marginTop: -scale(25),
+        zIndex: 10,
+        position: 'absolute',
+        right: 0,
+        top: 0,
+        marginTop: Platform.OS == 'ios' ? scale(50) : scale(70),
+        borderRadius: scale(10),
+        justifyContent: 'center',
+        alignItems: 'center'
+    }
 });
