@@ -2,6 +2,7 @@
 import Screen from './screens';
 
 const cinemaRoutes = {
-  Cinema_Home: { screen: Screen.Home }
+  CinemaHome: { screen: Screen.Home },
+  CinemaSeats:{screen:Screen.Seats}
 };
 export default cinemaRoutes;

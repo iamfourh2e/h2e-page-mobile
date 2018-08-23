@@ -229,10 +229,10 @@ export default class Home extends Component<Props> {
 
             {/* SnapCarousel */}
             <View style={styles.contentWrapper}>
-              <SnapCarousel
+              {/* <SnapCarousel
                 data={data}
                 autoplay={true}
-              />
+              /> */}
             </View>
 
             {/* category */}

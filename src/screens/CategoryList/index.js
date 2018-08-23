@@ -98,8 +98,8 @@ export default class CategoryList extends Component {
                 <ListItems key={k}
                     onPress={() => {
                         navigation.navigate({
-                            routeName: "Cinema_Home",
-                            key: "Cinema_Home",
+                            routeName: "CinemaHome",
+                            key: "CinemaHome",
                             params: { data }
                         })
                     }
