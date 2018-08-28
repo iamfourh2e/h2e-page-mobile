@@ -119,7 +119,6 @@ export default class MovieSchedule extends React.Component {
           ]
         }
       ];
-      console.log(this.props)
       return (
         <View style={styles.scheduleWrapper}>
           {data.map((o, k) => {

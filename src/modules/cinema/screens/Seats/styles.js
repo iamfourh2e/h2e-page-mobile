@@ -16,10 +16,36 @@ const HEADER_SCROLL_DISTANCE = HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT;
 export const styles = StyleSheet.create({
   seatsContainer: {
     flex: 1,
-    padding:scale(22),
+    // padding: padding,
+    alignItems: "center"
     // flexDirection:'column'
   },
-  seatsRow:{
-      alignItems:'center'
-  }
+  seatsWrapper: {
+    flex: 1,
+    // flexDirection:'row',
+    padding: padding
+  },
+  seatsRow: {
+    flex:1
+  },
+  movieTitle: {
+    fontSize: scale(15),
+    marginTop:scale(-20)
+  },
+  filterSeatsWrapper: {
+    flex: 1,
+    alignItems: "center",
+    flexDirection:'row'
+  },
+  btnFilterSeat: {
+    backgroundColor: Colors.info,
+    borderRadius: scale(10),
+    paddingLeft: scale(10),
+    paddingRight: scale(10),
+    paddingTop: scale(5),
+    paddingBottom: scale(5),
+    justifyContent: "center",
+    alignItems: "center",
+    margin:scale(5)
+  },
 });
