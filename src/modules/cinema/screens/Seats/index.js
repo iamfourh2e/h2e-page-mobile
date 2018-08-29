@@ -18,19 +18,35 @@ import {
   H2Eicon
 } from "@components";
 import { scale, verticalScale, moderateScale } from "../../../../libs/scaling";
+import { ActionSheetCustom as ActionSheet } from "react-native-actionsheet";
 
 import { Colors, Layout, Images } from "../../../../constants";
 import Feather from "react-native-vector-icons/Feather";
 import { styles } from "./styles";
-import { data } from "./data.js";
-
+import data from "./data.js";
+const options = [
+  "Cancel",
+  <Text>A</Text>,
+  <Text>B</Text>,
+  <Text>C</Text>,
+  <Text>D</Text>,
+  <Text>E</Text>,
+  <Text>F</Text>,
+  <Text>G</Text>,
+  <Text>H</Text>,
+  <Text>I</Text>,
+  <Text>J</Text>,
+  <Text>K</Text>
+];
 export default class Seats extends Component {
   constructor(props) {
     super(props);
     this.perspective = new Animated.Value(1);
     this.rotateX = new Animated.Value(0);
+    this.seatsRowOpactity = new Animated.Value(0);
     this.state = {
-      modalVisible: false
+      modalVisible: false,
+      filterRow: data
     };
   }
   componentDidMount() {
@@ -47,7 +63,34 @@ export default class Seats extends Component {
       })
     ]).start();
   }
-  renderSeats() {
+  showActionSheet = () => {
+    this.ActionSheet.show();
+  };
+  renderSeatsRow() {
+    return this.state.filterRow.map((obj, key) => {
+      return (
+        <TouchableOpacity key={key} style={styles.seatsRow}>
+          {/* <View style={styles.seatsRow}> */}
+          <View style={{ width: verticalScale(10), marginRight: scale(5) }}>
+            <Text>{obj.row}</Text>
+          </View>
+          {obj.seats.map((o, k) => {
+            return (
+              <View key={k}>
+                {o.num == 10 ? (
+                  <View style={{ marginRight: scale(10) }}>
+                    <SeatsNumber status={o.status} />
+                  </View>
+                ) : (
+                  <SeatsNumber status={o.status} />
+                )}
+              </View>
+            );
+          })}
+          {/* </View> */}
+        </TouchableOpacity>
+      );
+    });
   }
   setModalVisible(visible) {
     this.setState({ modalVisible: visible });
@@ -102,36 +145,39 @@ export default class Seats extends Component {
               />
             </Animated.View>
             <View style={styles.filterSeatsWrapper}>
-              <BtnFilter text="Available" type="fill" />
-              <BtnFilter text="Booked" />
-            </View>
-            <TouchableOpacity style={styles.seatsWrapper}>
-              {this.renderSeats()}
-            </TouchableOpacity>
-
-            <Modal
-              animationType="fade"
-              duration={3000}
-              transparent={true}
-              visible={this.state.modalVisible}
-              onRequestClose={() => {
-                alert("Modal has been closed.");
-              }}
-              hardwareAccelerated={true}
-            >
-              <View style={{ flex: 1, backgroundColor: "red" }}>
-                <View>
-                  <Text>Hello World!</Text>
-                  <TouchableOpacity
-                    onPress={() => {
-                      this.setModalVisible(!this.state.modalVisible);
-                    }}
-                  >
-                    <Text>Hide Modal</Text>
-                  </TouchableOpacity>
-                </View>
+              <View>
+                <Text onPress={this.showActionSheet}>Open ActionSheet</Text>
+                <ActionSheet
+                  ref={o => (this.ActionSheet = o)}
+                  title={
+                    <Text style={{ color: "#000", fontSize: 18 }}>
+                      Choose Row
+                    </Text>
+                  }
+                  options={options}
+                  cancelButtonIndex={0}
+                  destructiveButtonIndex={4}
+                  onPress={index => {
+                    if (index > 0) {
+                      const row = options[index].props.children;
+                      let filter = data.filter(o => {
+                        return o.row === row;
+                      });
+                      if (filter.length > 0) {
+                        this.setState({
+                          filterRow: filter
+                        });
+                      }
+                    } else {
+                      this.setState({
+                        filterRow: data
+                      });
+                    }
+                  }}
+                />
               </View>
-            </Modal>
+            </View>
+            <View style={styles.seatsWrapper}>{this.renderSeatsRow()}</View>
           </View>
         </ScrollView>
       </View>
@@ -195,3 +241,51 @@ export class BtnFilter extends Component {
     );
   }
 }
+
+export class SeatsNumber extends React.Component {
+  render() {
+    const { status } = this.props;
+    return (
+      <View>
+        <H2Eicon
+          name="seat"
+          color={status == "booked" ? Colors.info : Colors.grey}
+          size={scale(15)}
+        />
+      </View>
+    );
+  }
+}
+
+// export class ChooseRowActionSheet extends React.Component {
+//   showActionSheet = () => {
+//     this.ActionSheet.show();
+//   };
+//   render() {
+//     return (
+//       <View>
+//         <Text onPress={this.showActionSheet}>Open ActionSheet</Text>
+//         <ActionSheet
+//           ref={o => (this.ActionSheet = o)}
+//           title={
+//             <Text style={{ color: "#000", fontSize: 18 }}>Choose Row</Text>
+//           }
+//           options={options}
+//           cancelButtonIndex={0}
+//           destructiveButtonIndex={4}
+//           onPress={index => {
+//             const row = options[index].props.children;
+//             filterRow = data.filter(o => {
+//               return o.row === row;
+//             });
+//             if (filter.length > 0) {
+//               this.setState({
+//                 filterRow: filter
+//               });
+//             }
+//           }}
+//         />
+//       </View>
+//     );
+//   }
+// }

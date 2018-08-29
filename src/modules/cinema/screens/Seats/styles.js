@@ -26,16 +26,19 @@ export const styles = StyleSheet.create({
     padding: padding
   },
   seatsRow: {
-    flex:1
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "center",
+    marginTop: scale(7)
   },
   movieTitle: {
     fontSize: scale(15),
-    marginTop:scale(-20)
+    marginTop: scale(-20)
   },
   filterSeatsWrapper: {
     flex: 1,
     alignItems: "center",
-    flexDirection:'row'
+    flexDirection: "row"
   },
   btnFilterSeat: {
     backgroundColor: Colors.info,
@@ -46,6 +49,6 @@ export const styles = StyleSheet.create({
     paddingBottom: scale(5),
     justifyContent: "center",
     alignItems: "center",
-    margin:scale(5)
-  },
+    margin: scale(5)
+  }
 });
